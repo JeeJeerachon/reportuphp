@@ -18,7 +18,14 @@ require_once("../DB/connect.php");
           <a class="nav-link " href="home.php" title="กรอกข้อมูลเข้าไปในการแจ้ง">แบบฟอร์มแจ้งซ่อม</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../app/showdatauser.php">แสดงคำร้องข้อมูลแจ้ง</a>
+          <a class="nav-link" href="../app/showdatauser.php">แสดงคำร้องข้อมูลแจ้ง
+          <?php 
+            $coutstatus = 1;
+            if ($coutstatus != 0) { ?>
+              <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
+              <?php echo $coutstatus;
+            } ?>
+          </a>
         </li>
       </ul>
 
