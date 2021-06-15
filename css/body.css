@@ -1,0 +1,23 @@
+body {
+    background: url('img/bg.jfif') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+  .main {
+ width:360;
+ margin:2rem auto;
+ height: 560px;
+ box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+ border-radius: 50px; 
+ overflow: hidden;
+ background-color: rgb(255, 255, 255);
+  }
+  .main-1 {
+    margin:4rem auto;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    border-radius: 25px; 
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+     }

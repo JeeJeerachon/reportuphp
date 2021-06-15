@@ -1,0 +1,19 @@
+<div class="modal fade" id="Modelsuc" . $row["Case_ID"] . "" tabindex="-1" aria-labelledby="modelsuccess"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="" . $row["Case_ID"] . "">ยืนยันการรับงาน</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                โปรดยืนยันการรับงาน
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
+
+                <button type="submit" class="btn btn-success">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
