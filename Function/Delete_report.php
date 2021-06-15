@@ -5,7 +5,7 @@ $page = $_SESSION["lastpage"];
 if (isset($_POST['tempId'])) {
   $idupd = $_POST['tempId'];
   $sa = $_SESSION['Username'];
-  $upd = " UPDATE report SET stat = 'ยกเลิก' , Worker = '$sa' WHERE Case_ID = '$idupd'";
+  echo $upd = " UPDATE report SET stat = 'ยกเลิก' , Worker = '$sa' WHERE Case_ID = '$idupd'";
   $result = mysqli_query($con, $upd);
   if ($result) {
         echo "<script type=\"text/javascript\">";

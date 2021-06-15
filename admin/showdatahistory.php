@@ -45,7 +45,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
               <tbody>
                 <?php
                 require '../DB/connect.php';
-                $result = mysqli_query($con, "SELECT * FROM report WHERE stat = 'สำเร็จ' ");
+                $result = mysqli_query($con, "SELECT * FROM report WHERE stat = 'สำเร็จ' or stat= 'ยกเลิก' ");
 
                 if ($result) {
 
