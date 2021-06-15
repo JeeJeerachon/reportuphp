@@ -52,6 +52,7 @@ require "../auth/sessionpersist.php"
               <div class="mb-3">
                 <label for="Telnum" class="form-label"><b>เบอร์โทรศัพท์</b></label>
                 <input type="text" class="form-control" placeholder="ระบุเบอร์โทรศัพท์" name="telnum" id="telnum" required>
+                <input type="hidden" name="acc" value = 'admin'>
               </div>
             </td>
           </tr>

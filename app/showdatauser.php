@@ -45,12 +45,12 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                     <tbody>
                         <?php
                         require '../DB/connect.php';
-                        $result = mysqli_query($con, "SELECT * FROM report Where Username = '$uname' and stat != 'Done' ");
+                        $result = mysqli_query($con, "SELECT * FROM report Where Username = '$uname' and stat != 'Done' order by stat");
 
                         if ($result) {
 
                             while ($row = mysqli_fetch_array($result)) {
-                                if ($row["Stat"] == 'รอดำเนินการ') {
+                                if ($row["Stat"] == 'รอช่าง') {
                                     $color = 'bg-primary text-white';
                                 } elseif ($row["Stat"] == 'กำลังดำเนินการ') {
                                     $color = 'bg-warning text-dark';
@@ -74,7 +74,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 echo "<td><div class=' badge " . $color . "' style='width: 6rem;' >" . $row["Stat"] . "</div></td>";
                                 echo "<td>" . $row["Worker"] . "</td>";
                                 echo "<td><div class='btn-group' role='group' aria-label='Basic mixed styles example'>
-                <form action='../components/delete.php' method='POST'>
+                <form action='../components/Delete_report.php' method='POST'>
                 <input  type='hidden' name='delete' value='" . $row["Case_ID"] . "'/>
                 <button type='button'class=' btn btn-danger'name='submit-btn' title='ลบรายการแจ้งซ่อม'  value='ลบ' data-bs-toggle='modal' data-bs-target='#Modeldel" . $row["Case_ID"] . "'>
                 <span class='material-icons'>

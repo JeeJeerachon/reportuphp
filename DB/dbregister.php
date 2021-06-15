@@ -6,7 +6,7 @@ $pass2 = $_POST['psw-repeat'];
 $Fname = $_POST['Fname'];
 $Lname = $_POST['Lname'];
 $tel = $_POST['telnum'];
-$access = 'user';
+$access = $_POST['acc'];
 
 if ($pass == $pass2) {
     /* $uname =$_SESSION["Username"]; */

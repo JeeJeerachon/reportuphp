@@ -32,6 +32,9 @@ if (!$objResult) {
 		} elseif ($objResult["Access"] == "admin") {
 			$_SESSION['type'] = 'admin';
 			header("location:../admin/showdata.php");
+		} elseif ($objResult["Access"] == "superadmin"){
+			$_SESSION['type'] = 'superadmin';
+			header("location:../admin/showdata.php");
 		}
 	}
 }
