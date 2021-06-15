@@ -14,7 +14,14 @@ require_once("../DB/connect.php");
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="../admin/showdata.php">งานแจ้งซ่อมที่ยังไม่ได้ทำ</a>
+          <a class="nav-link" aria-current="page" href="../admin/showdata.php">งานแจ้งซ่อมที่ยังไม่ได้ทำ
+          <?php 
+            $coutstatus = 1;
+            if ($coutstatus != 0) { ?>
+              <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
+              <?php echo $coutstatus;
+            } ?>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../admin/showdataprogess.php">งานที่กำลังทำ</a>
