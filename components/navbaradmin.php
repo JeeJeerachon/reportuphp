@@ -20,20 +20,27 @@ require_once("../DB/connect.php");
           <a class="nav-link" href="../admin/showdatahistory.php">แสดงประวัติการแจ้งซ่อม</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../admin/showchart.php">สถิติ</a>
+          <a class="nav-link" href="../admin/showchart.php" id="demo">สถิติ
+            <?php 
+            $coutstatus = 0;
+            if ($coutstatus != 0) { ?>
+              <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
+              <?php echo $coutstatus;
+            } ?>
+              </span></a>
         </li>
-        
-        <?php if ($_SESSION['type']=='superadmin') { ?>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="../admin/room.php">ห้อง</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../admin/tool.php">อุปกรณ์</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../admin/register.php">เพิ่มสมาชิก</a>
-        </li>
+
+        <?php if ($_SESSION['type'] == 'superadmin') { ?>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../admin/room.php">ห้อง</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../admin/tool.php">อุปกรณ์</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../admin/register.php">เพิ่มสมาชิก</a>
+          </li>
 
         <?php } ?>
       </ul>
@@ -85,6 +92,14 @@ require_once("../DB/connect.php");
     </div>
   </div>
 </div>
+
+<script>
+document.getElementById("demo").onclick = function() {myFunction()};
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
+</script>
 
 <style>
   .avatar {
