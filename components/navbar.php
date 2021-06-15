@@ -19,11 +19,15 @@ require_once("../DB/connect.php");
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../app/showdatauser.php">แสดงคำร้องข้อมูลแจ้ง
-          <?php 
-            $coutstatus = 1;
-            if ($coutstatus != 0) { ?>
-              <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
-              <?php echo $coutstatus;
+          <?php
+          require '../DB/connect.php';
+          $x =$_SESSION['Username'];
+          $result = mysqli_query($con, "SELECT count(*) as total from report where Username = '$x' ");
+          $data = mysqli_fetch_assoc($result);
+          $sum = $data['total'];
+          if ($sum > 0) { ?>
+            <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
+            <?php echo $sum;
             } ?>
           </a>
         </li>

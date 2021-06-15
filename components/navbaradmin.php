@@ -15,11 +15,14 @@ require_once("../DB/connect.php");
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../admin/showdata.php">งานแจ้งซ่อมที่ยังไม่ได้ทำ
-          <?php 
-            $coutstatus = 1;
-            if ($coutstatus != 0) { ?>
-              <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
-              <?php echo $coutstatus;
+          <?php
+      require '../DB/connect.php';
+      $result = mysqli_query($con, "SELECT count(*) as total from report where stat = 'รอช่าง'");
+      $data = mysqli_fetch_assoc($result);
+      $sum = $data['total'];
+      if ($sum > 0) { ?>
+       <span class="badge badge-light" style="display: inline-block; background-color: red; color: white;">
+              <?php echo $sum;
             } ?>
           </a>
         </li>

@@ -74,8 +74,8 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 echo "<td><div class=' badge " . $color . "' style='width: 6rem;' >" . $row["Stat"] . "</div></td>";
                                 echo "<td>" . $row["Worker"] . "</td>";
                                 echo "<td><div class='btn-group' role='group' aria-label='Basic mixed styles example'>
-                <form action='../components/Delete_report.php' method='POST'>
-                <input  type='hidden' name='delete' value='" . $row["Case_ID"] . "'/>
+                <form action='../Function/Delete_report.php' method='POST'>
+                <input type='hidden' name='tempId' value='" . $row["Case_ID"] . "'/>
                 <button type='button'class=' btn btn-danger'name='submit-btn' title='ลบรายการแจ้งซ่อม'  value='ลบ' data-bs-toggle='modal' data-bs-target='#Modeldel" . $row["Case_ID"] . "'>
                 <span class='material-icons'>
               delete
