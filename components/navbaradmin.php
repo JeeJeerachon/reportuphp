@@ -14,7 +14,10 @@ require_once("../DB/connect.php");
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="../admin/showdata.php">แสดงคำร้องข้อมูลแจ้งซ่อม</a>
+          <a class="nav-link" aria-current="page" href="../admin/showdata.php">งานแจ้งซ่อมที่ยังไม่ได้ทำ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="../admin/showdataprogess.php">งานที่กำลังทำ</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../admin/showdatahistory.php">แสดงประวัติการแจ้งซ่อม</a>
@@ -22,7 +25,7 @@ require_once("../DB/connect.php");
         <li class="nav-item">
           <a class="nav-link" href="../admin/showchart.php">สถิติ</a>
         </li>
-        
+
         <?php if ($_SESSION['type']=='superadmin') { ?>
         
         <li class="nav-item">
@@ -41,8 +44,11 @@ require_once("../DB/connect.php");
       <span class="dropdown" class="navbar-text ">
         <a class="nav-link dropdown-toggle" style="color: #FFFFFF;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../img/profile.png" alt="Avatar" class="avatar">
           <?php
-
-          echo $_SESSION["type"];
+          if ($_SESSION["type"]=='admin'){
+            echo 'ช่าง';
+          }elseif ($_SESSION["type"]=='superadmin'){
+            echo 'ผู้ดูแล';
+          }
           echo "  : <tr class='fs-4' >" . $_SESSION['Username'] . "</tr>"; ?>
         </a>
         <ul class="dropdown-menu">

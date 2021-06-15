@@ -67,30 +67,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                     echo "<td><div class='badge bg-success text-white'>" . $row["Stat"] . "</div></td>";
                     //echo "<td><button id='" . $row['Case_ID'] . "' onclick = >Accept</button></td>" ;
                     echo "<td>" . $row["Worker"] . "</td>";
-                    echo "<td> <div class='btn-group' role='group' aria-label='Basic mixed styles example'><form action='../components/delete.php' method='POST'>
-              <input type='hidden' name='delete' value='" . $row["Case_ID"] . "'/>
-              <button type='button' class='btn btn-danger' name='submit-btn' title='ลบประวัติแจ้งซ่อม'value='ลบ' data-bs-toggle='modal' data-bs-target='#Modeldel" . $row["Case_ID"] . "'/>
-              <span class='material-icons'>
-              delete
-              </span>
-              </button>
-              <div class='modal fade' id='Modeldel" . $row["Case_ID"] . "' tabindex='-1' aria-labelledby='modeldell' aria-hidden='true'>
-              <div class='modal-dialog'>
-                <div class='modal-content'>
-                    <div class='modal-header'>
-                      <h5 class='modal-title' id='modeldell'>ยืนยันการลบ</h5>
-                      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                    </div>
-                    <div class='modal-body'>
-                      โปรดยืนยันการลบรายงาน
-                    </div>
-                    <div class='modal-footer'>
-                      <button type='button' class='btn btn-success' data-bs-dismiss='modal'>ยกเลิก</button>
-                      <button type='submit' class='btn btn-danger'>ลบ</button>
-                    </div>
-                  </div>
-                </div>
-              </div></form>";
+                    echo "<td> <div class='btn-group' role='group' aria-label='Basic mixed styles example'>";
                     echo "<form target='_blank' action='../admin/jobdetail.php' method='POST'><input type='hidden' name='job' value='" . $row["Case_ID"] . "'/>
                   <button type='submit' class='btn btn-warning' name='submit-btn' title='รายละเอียดประวัติแจ้งซ่อม'value='รายละเอียด'>
                   <span class='material-icons'>
