@@ -32,45 +32,79 @@ $_SESSION['target'] = $target;
               if ($result) {
                 while ($row = mysqli_fetch_array($result)) {
                   $date = date_create($row["Date"]);
-                  echo "<table class='' style='width:100%'>
-                  <thead>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style='width:25%'><p class='fw-bold'>งานที่  : </p></td>
-                      <td style='width:25%'><p>" . $row["Case_ID"] . "</p></td>
-                      <td style='width:25%'><p class='fw-bold'>สถานที่  : </p></td>
-                      <td style='width:25%'><p>" .  $row["Location"] . "</p></td>
-                    </tr>
-                    <tr>
-                      <td style='width:25%'><p class='fw-bold'>รายงานโดย  : </p></td>
-                      <td style='width:25%'><p>" . $row["Username"] . "</p></td>
-                      <td style='width:25%'><p class='fw-bold'>เวลา  : </p></td>
-                      <td style='width:25%'><p>" .  $row["Time"] . "</p></td>
-                    </tr>
-                    <tr>
-                      <td style='width:25%'><p class='fw-bold'>วันที่ : </p></td>
-                      <td style='width:25%'><p>" . date_format($date, "d/m/Y") . "</p></td>
-                      <td style='width:25%'><p class='fw-bold'>สถานะ  : </p></td>
-                      <td style='width:25%'><p>" .  $row["Stat"] . "</p></td>
-                    </tr>
-                    <tr>
-                      <td style='width:25%'><p class='fw-bold'>ปัญหา  : </p></td>
-                      <td style='width:25%'><p>" . $row["Problem"] . "</p></td>
-                    </tr>
-                    <tr>
-                      <td style='width:25%'><p class='fw-bold'>รายละเอียด  : </p></td>
-                      <td colspan='3' class='text-break' style='width:25%'><p>" . $row["Description"] . "</p></td>
-                    </tr>
-                    
-                  </tbody>
-                </table>";
+              ?>
+                  <table class='' style='width:100%'>
+                    <thead>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>งานที่ : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo $row["Case_ID"]; ?></p>
+                        </td>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>สถานที่ : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo $row["Location"]; ?></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>รายงานโดย : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo $row["Username"]; ?></p>
+                        </td>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>เวลา : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo $row["Time"]; ?></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>วันที่ : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo date_format($date, "d/m/Y"); ?></p>
+                        </td>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>สถานะ : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo $row["Stat"]; ?></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>ปัญหา : </p>
+                        </td>
+                        <td style='width:25%'>
+                          <p><?php echo $row["Problem"]; ?></p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style='width:25%'>
+                          <p class='fw-bold'>รายละเอียด : </p>
+                        </td>
+                        <td colspan='3' class='text-break' style='width:25%'>
+                          <p><?php echo $row["Description"]; ?></p>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>";
+              <?php
                   $_SESSION['cid'] = $row["Case_ID"];
                   $_SESSION['loc'] = $row["Location"];
                   $_SESSION['pro'] = $row["Problem"];
@@ -81,6 +115,49 @@ $_SESSION['target'] = $target;
                   $_SESSION['fname'] = $row["firstname"];
                   $_SESSION['lname'] = $row["lastname"];
                 }
+              }
+              ?>
+            </div>
+            <div>
+              <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
+              <div class="custom-control custom-radio custom-control-inline" style="display: inline-block;">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">ใช่</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline" style="display: inline-block;">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">ไม่ใช่</label>
+              </div>
+            </div>
+            <!-- ปรับแก้ pdf -->
+            <div>
+              <p>ส่วนที่ 1</p>
+              <?php
+              $m = 1;
+              while ($m <= 6) {
+              ?>
+                <div class="custom-control custom-checkbox" style="display: inline-block;">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">but <?php echo $m; ?></label>
+                  <button type="button" class="btn btn-danger">ลบ</button>
+                </div>
+              <?php
+                $m += 1;
+              }
+              ?>
+              <button type="button" class="btn btn-light">เพิ่มครุภัณฑ์</button>
+              <p>ส่วนที่ 2</p>
+              <?php
+              $m1 = 1;
+              while ($m1 <= 3) {
+              ?>
+                <div class="custom-control custom-checkbox" style="display: inline-block;">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">ช่าง <?php echo $m; ?></label>
+                  <button type="button" class="btn btn-danger">ลบ</button>
+                </div>
+              <?php
+                $m1 += 1;
               }
               ?>
             </div>
