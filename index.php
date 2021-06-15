@@ -24,8 +24,6 @@ if ($_SESSION['type'] == 'user') {
 
 <body>
   <form class="container" action="auth/checkLogin.php" method="post" style="margin-top: 5%;">
-  
-    
     <div class="main col-md-6 offset-md-3" >
       <div class="text-center" style="margin-top: 5%;">
         <img src="https://upload.wikimedia.org/wikipedia/th/thumb/a/a4/UPHosLogo.svg/1024px-UPHosLogo.svg.png"  class="img-fluid w-25 p-3" alt="Responsive image">
@@ -35,10 +33,9 @@ if ($_SESSION['type'] == 'user') {
       <div class="p-5 row">
         <label for="uname" class="mb-2"><b>Username</b></label>
         <input class="form-control mb-2" type="text" placeholder="Enter Username" name="uname" required>
-
         <label for="psw" class="mb-2"><b>Password</b></label>
         <input class="form-control mb-2" type="password" placeholder="Enter Password" name="psw" required>
-
+        <a href="./register.php" class="mb-2">ลงทะเบียน</a>
         <button type="submit" class="btn btn-primary mt-2">Login</button>
       </div>
     
