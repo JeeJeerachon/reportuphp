@@ -22,15 +22,20 @@ require_once("../DB/connect.php");
         <li class="nav-item">
           <a class="nav-link" href="../admin/showchart.php">สถิติ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../admin/register.php">เพิ่มสมาชิก</a>
-        </li>
+        
+        <?php if ($_SESSION['type']=='superadmin') { ?>
+        
         <li class="nav-item">
           <a class="nav-link" href="../admin/room.php">ห้อง</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../admin/tool.php">อุปกรณ์</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../admin/register.php">เพิ่มสมาชิก</a>
+        </li>
+
+        <?php } ?>
       </ul>
 
       <span class="dropdown" class="navbar-text ">
