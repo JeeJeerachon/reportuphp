@@ -22,7 +22,7 @@ require_once("../DB/connect.php");
           <?php
           require '../DB/connect.php';
           $x =$_SESSION['Username'];
-          $result = mysqli_query($con, "SELECT count(*) as total from report where Username = '$x' ");
+          $result = mysqli_query($con, "SELECT count(*) as total from report where Username = '$x' and newupdate = '1'");
           $data = mysqli_fetch_assoc($result);
           $sum = $data['total'];
           if ($sum > 0) { ?>

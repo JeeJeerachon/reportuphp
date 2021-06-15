@@ -48,7 +48,8 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                         $result = mysqli_query($con, "SELECT * FROM report Where Username = '$uname' and stat != 'Done' order by stat");
 
                         if ($result) {
-
+                            $x=$_SESSION['Username'];
+                            $result2 = mysqli_query($con,"UPDATE report SET newupdate = '0' WHERE username = '$x'");
                             while ($row = mysqli_fetch_array($result)) {
                                 if ($row["Stat"] == 'รอช่าง') {
                                     $color = 'bg-primary text-white';
