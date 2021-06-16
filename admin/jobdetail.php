@@ -121,41 +121,53 @@ $_SESSION['target'] = $target;
             <div>
               <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="toggledisable('longcup')">
                 <label class="form-check-label" for="inlineRadio1">ใช่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable('tray')" <?php if ($row['tray'] != 0) {
-                                                                                                                                                            echo 'checked';
-                                                                                                                                                          } ?>>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable('longcup')" checked>
                 <label class="form-check-label" for="inlineRadio2">ไม่ใช่</label>
               </div>
             </div>
 
             <!-- ปรับแก้ pdf -->
-            <div id="tray">
+            <div>
               <p>ส่วนที่ 1</p>
-              <?php
-              $m = 1;
-              echo 'มีความประสงค์ซ่อม';
-              while ($m <= 6) {
-              ?>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1"><?php echo $m; ?></label>
-                </div>
-              <?php
-                $m += 1;
-              }
-              ?>
+
+              <p>มีความประสงค์ซ่อม</p>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ครุภัณฑ์การแพทย์</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ครุภัณฑ์สำนักงาน</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ครุภัณฑ์คอมพิวเตอร์</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ระบบปรับอากาศ</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ระบบไฟฟ้า</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ระบบสุขาภิบาล</label>
+              </div>
+              <br>
               <!-- Button trigger modal -->
-              <form action="" method="POST">
+              <!-- <form action="" method="POST">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   เพิ่มครุภัณฑ์
-                </button>
+                </button> -->
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <!-- Modal -->
+              <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -174,30 +186,37 @@ $_SESSION['target'] = $target;
                     </div>
                   </div>
                 </div>
-              </form>
+              </form> -->
 
               <p>ส่วนที่ 2</p>
-
-              <?php
-              $n = 1;
-              echo 'การมอบหมายให้';
-              while ($n <= 3) {
-              ?>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                  <label class="form-check-label" for="inlineCheckbox1"><?php echo $n; ?></label>
-                </div>
-              <?php
-                $n += 1;
-              }
-              ?>
-              <form action="" method="POST">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ช่งระบบปรับอำกาศ</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ช่างระบบไฟฟ้า</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ช่างระบบสุขำภิบาล</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ช่างครุภัณฑ์การแพทย์</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="longcup">
+                <label class="form-check-label" for="longcup">ช่างครุภัณฑ์คอมพิวเตอร์</label>
+              </div>
+              <br>
+              <!-- <form action="" method="POST">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                   เพิ่มช่าง
-                </button>
+                </button> -->
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+              <!-- Modal -->
+              <!-- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -216,7 +235,7 @@ $_SESSION['target'] = $target;
                     </div>
                   </div>
                 </div>
-              </form>
+              </form> -->
             </div>
 
             <!-- ปุ่มปริ้น -->
