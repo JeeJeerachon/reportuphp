@@ -1,7 +1,7 @@
 <?php
 $content = "admin";
-require "../auth/sessionpersist.php"
-$_SESSION['lastpage'] = "../admin/createtool.php"
+require "../auth/sessionpersist.php";
+$_SESSION['lastpage'] = "../admin/createtool.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@ $_SESSION['lastpage'] = "../admin/createtool.php"
   ?>
   <div class="container">
     <br>
-    <form action="../Function/addnewroom.php" method="post">
+    <form action="../Function/addnewtool.php" method="post">
     <div  class="main-1">
         <div class="shadow-lg p-3">
         <h1>เพิ่มอุปกรณ์</h1>

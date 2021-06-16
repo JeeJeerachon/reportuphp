@@ -50,6 +50,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                         if ($result) {
                             $x=$_SESSION['Username'];
                             $result2 = mysqli_query($con,"UPDATE report SET newupdate = '0' WHERE username = '$x'");
+                            $aaaa = 1;
                             while ($row = mysqli_fetch_array($result)) {
                                 if ($row["Stat"] == 'รอช่าง') {
                                     $color = 'bg-primary text-white';
@@ -58,7 +59,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 } else {
                                     $color = 'bg-success text-white';
                                 }
-
+                                
                                 echo "<tr>";
                                 echo "<td>" . $row["Case_ID"] . "</td>";
                                 echo "<td>" . $row["Location"] . "</td>";
@@ -74,9 +75,11 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 // echo "<td>" . "</td>";
                                 echo "<td><div class=' badge " . $color . "' style='width: 6rem;' >" . $row["Stat"] . "</div></td>";
                                 echo "<td>" . $row["Worker"] . "</td>";
-                                echo "<td><div class='btn-group' role='group' aria-label='Basic mixed styles example'>
-                <form action='../Function/Delete_report.php' method='POST'>
+                                echo "<td><div class='btn-group' role='group' aria-label='Basic mixed styles example'>";
+                                if ($row["Stat"]== 'รอช่าง' || $row["Stat"]=='กำลังดำเนินการ'){
+                                    echo "<form action='../Function/Delete_report.php' method='POST'>
                 <input type='hidden' name='tempId' value='" . $row["Case_ID"] . "'/>
+                <input type='hidden' name='cause' value='ลบโดยผู้ใช้'/>
                 <button type='button'class=' btn btn-danger'name='submit-btn' title='ลบรายการแจ้งซ่อม'  value='ลบ' data-bs-toggle='modal' data-bs-target='#Modeldel" . $row["Case_ID"] . "'>
                 <span class='material-icons'>
               delete
@@ -99,8 +102,8 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
               </div>
             </div>
           </div>
-          </form>
-          <form target='_blank' action='../admin/jobdetail.php' method='POST'>
+          </form>"; }
+          echo "<form target='_blank' action='../admin/jobdetail.php' method='POST'>
           <input  type='hidden' name='job' value='" . $row["Case_ID"] . "'/>
                 
           <button type='submit'class=' btn btn-warning'name='submit-btn'title='รายละเอียดการแจ้งซ่อม'    value='รายละเอียด' >
@@ -110,8 +113,8 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
           </span></button>
           </form>
           </div>
-          </td>";
-                                echo "</tr>";
+          </td>"; 
+                                echo "</tr>"; $aaaa = $aaaa+1;
                             }
                         }
                         ?></tbody>

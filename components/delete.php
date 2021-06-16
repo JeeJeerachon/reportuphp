@@ -1,5 +1,5 @@
 <?php
-session_start();
+/* session_start();
 require '../DB/connect.php';
 $page = $_SESSION["lastpage"];
 if (isset($_POST['delete'])) {
@@ -14,4 +14,4 @@ if (isset($_POST['delete'])) {
   } else {
     echo 'แก้ไขข้อมูลไม่สำเร็จ';
   }
-}
+} */?>
