@@ -121,11 +121,11 @@ $_SESSION['target'] = $target;
             <div>
               <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="toggledisable('longcup')">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="toggledisable()">
                 <label class="form-check-label" for="inlineRadio1">ใช่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable('longcup')" checked>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable()" checked>
                 <label class="form-check-label" for="inlineRadio2">ไม่ใช่</label>
               </div>
             </div>
@@ -136,28 +136,28 @@ $_SESSION['target'] = $target;
 
               <p>มีความประสงค์ซ่อม</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ครุภัณฑ์การแพทย์</label>
+                <input class="form-check-input" type="checkbox" id="longcup1" value='1' disabled>
+                <label class="form-check-label" for="longcup1">ครุภัณฑ์การแพทย์</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ครุภัณฑ์สำนักงาน</label>
+                <input class="form-check-input" type="checkbox" id="longcup2" disabled>
+                <label class="form-check-label" for="longcup2">ครุภัณฑ์สำนักงาน</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ครุภัณฑ์คอมพิวเตอร์</label>
+                <input class="form-check-input" type="checkbox" id="longcup3" disabled> 
+                <label class="form-check-label" for="longcup3">ครุภัณฑ์คอมพิวเตอร์</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ระบบปรับอากาศ</label>
+                <input class="form-check-input" type="checkbox" id="longcup4" disabled>
+                <label class="form-check-label" for="longcup4">ระบบปรับอากาศ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ระบบไฟฟ้า</label>
+                <input class="form-check-input" type="checkbox" id="longcup5" disabled>
+                <label class="form-check-label" for="longcup5">ระบบไฟฟ้า</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ระบบสุขาภิบาล</label>
+                <input class="form-check-input" type="checkbox" id="longcup6" disabled>
+                <label class="form-check-label" for="longcup6">ระบบสุขาภิบาล</label>
               </div>
               <br>
               <!-- Button trigger modal -->
@@ -190,24 +190,24 @@ $_SESSION['target'] = $target;
 
               <p>ส่วนที่ 2</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ช่งระบบปรับอำกาศ</label>
+                <input class="form-check-input" type="checkbox" id="longcup7" disabled>
+                <label class="form-check-label" for="longcup7">ช่างระบบปรับอากาศ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ช่างระบบไฟฟ้า</label>
+                <input class="form-check-input" type="checkbox" id="longcup8" disabled>
+                <label class="form-check-label" for="longcup8">ช่างระบบไฟฟ้า</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ช่างระบบสุขำภิบาล</label>
+                <input class="form-check-input" type="checkbox" id="longcup9" disabled>
+                <label class="form-check-label" for="longcup9">ช่างระบบสุขาภิบาล</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ช่างครุภัณฑ์การแพทย์</label>
+                <input class="form-check-input" type="checkbox" id="longcup10" disabled>
+                <label class="form-check-label" for="longcup10">ช่างครุภัณฑ์การแพทย์</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup">
-                <label class="form-check-label" for="longcup">ช่างครุภัณฑ์คอมพิวเตอร์</label>
+                <input class="form-check-input" type="checkbox" id="longcup11" disabled>
+                <label class="form-check-label" for="longcup11">ช่างครุภัณฑ์คอมพิวเตอร์</label>
               </div>
               <br>
               <!-- <form action="" method="POST">
@@ -285,12 +285,32 @@ $_SESSION['target'] = $target;
   ?>
 </body>
 <script>
-  function toggledisable(target) {
-    if (document.getElementById(target).hasAttribute("disabled")) {
-      document.getElementById(target).removeAttribute("disabled");
+  function toggledisable() {
+    if (document.getElementById("longcup1").hasAttribute("disabled")) {
+      document.getElementById("longcup1").removeAttribute("disabled")
+      document.getElementById("longcup2").removeAttribute("disabled")
+      document.getElementById("longcup3").removeAttribute("disabled")
+      document.getElementById("longcup4").removeAttribute("disabled")
+      document.getElementById("longcup5").removeAttribute("disabled")
+      document.getElementById("longcup6").removeAttribute("disabled")
+      document.getElementById("longcup7").removeAttribute("disabled")
+      document.getElementById("longcup8").removeAttribute("disabled")
+      document.getElementById("longcup9").removeAttribute("disabled")
+      document.getElementById("longcup10").removeAttribute("disabled")
+      document.getElementById("longcup11").removeAttribute("disabled")
       console.log("i did it")
     } else {
-      document.getElementById(target).setAttribute("disabled", "true")
+      document.getElementById("longcup1").setAttribute("disabled", "true")
+      document.getElementById("longcup2").setAttribute("disabled", "true")
+      document.getElementById("longcup3").setAttribute("disabled", "true")
+      document.getElementById("longcup4").setAttribute("disabled", "true")
+      document.getElementById("longcup5").setAttribute("disabled", "true")
+      document.getElementById("longcup6").setAttribute("disabled", "true")
+      document.getElementById("longcup7").setAttribute("disabled", "true")
+      document.getElementById("longcup8").setAttribute("disabled", "true")
+      document.getElementById("longcup9").setAttribute("disabled", "true")
+      document.getElementById("longcup10").setAttribute("disabled", "true")
+      document.getElementById("longcup11").setAttribute("disabled", "true")
       console.log("nani")
     }
 
