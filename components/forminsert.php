@@ -1,12 +1,12 @@
 <?php
 session_start();
 require '../DB/connect.php';
-    $header = "ระบบแจ้งซ่อม";
+    $header = "แจ้งซ่อม";
     $desc = $_POST['desc'];
     $room = $_POST['room'];
     $type = $_POST['type'];
     $uname =$_SESSION["Username"];
-    $adddat = "INSERT INTO report (Location,Problem,Description,Time,Date,Stat,Username,Worker) VALUE ('$room','$type','$desc',CURRENT_TIME(),CURRENT_DATE(),'รอดำเนินการ','$uname','ไม่มี')";
+    $adddat = "INSERT INTO report (Location,Problem,Description,Time,Date,Stat,Username,Worker) VALUE ('$room','$type','$desc',CURRENT_TIME(),CURRENT_DATE(),'รอช่าง','$uname','ไม่มี')";
     $tokena = "SELECT api FROM token_line";
     $result = mysqli_query($con,$tokena);
     while ($row = mysqli_fetch_array($result)) {
@@ -18,10 +18,11 @@ define('LINE_API',"https://notify-api.line.me/api/notify");
 /* $token = "mWLUxFiNjmdgXKZu8oqef6H00OGi6ktec0ftBvhpTs7";  */
  //ข้อความที่ต้องการส่ง สูงสุด 1000 ตัวอักษร
 $str = $message = $header.
+        "\n".'งานใหม่!!!'.
         "\n".'ประเภท  : '.$type.
         "\n".'รายละเอียด  : '.$desc.
         "\n".'ห้อง  : '.$room.
-        "\n".'ชื่อ  : '.$uname;
+        "\n".'แจ้งโดย  : '.$uname;
 function notify_message($message,$token){
  $queryData = array('message' => $message);
  $queryData = http_build_query($queryData,'','&');
