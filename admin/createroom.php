@@ -1,7 +1,7 @@
 <?php
 $content = "admin";
-require "../auth/sessionpersist.php"
-$_SESSION['lastpage'] = "../admin/createroom.php"
+require "../auth/sessionpersist.php";
+$_SESSION['lastpage'] = "../admin/createroom.php";
 ?>
 <!DOCTYPE html>
 <html>

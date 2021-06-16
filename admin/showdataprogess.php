@@ -131,8 +131,8 @@ $_SESSION['lastpage'] = "../admin/showdataprogess.php";
                           </button>
                     </form>";
                 // ปุ่มลบ 
-                echo "<form action='../components/Delete_report.php' method='POST'>
-                      <input type='hidden' name='delete' value='" . $row["Case_ID"] . "'/>
+                echo "<form action='../Function/Delete_report.php' method='POST'>
+                <input type='hidden' name='tempId' value='" . $row["Case_ID"] . "'/>
                       <button type='button' class='btn btn-danger' name='submit-btn' title='ลบรายการแจ้งซ่อม' data-bs-toggle='modal' data-bs-target='#Modeldel" . $row["Case_ID"] . "'/>
                       <span class='material-icons'>
                       delete
@@ -148,7 +148,7 @@ $_SESSION['lastpage'] = "../admin/showdataprogess.php";
                             <div class='modal-body'>
                               โปรดกรอกเหตุผลการลบรายงาน
                               <div class='input-group'>
-                                <textarea class='form-control' aria-label='With textarea'></textarea>
+                                <textarea class='form-control' aria-label='With textarea' name='cause'></textarea>
                               </div>
                             </div>
                             <div class='modal-footer'>
