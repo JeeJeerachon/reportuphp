@@ -1,6 +1,7 @@
 <?php
 $content = "admin";
-require "../auth/sessionpersist.php"
+require "../auth/sessionpersist.php";
+$_SESSION['lastpage'] = "../admin/register.php";
 ?>
 <!DOCTYPE html>
 <html>

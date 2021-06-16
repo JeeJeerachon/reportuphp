@@ -174,6 +174,14 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
   <?php
   include '../components/footer.php'
   ?>
+<script> function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 </body>
 
 </html>

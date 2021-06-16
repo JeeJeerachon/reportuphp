@@ -2,10 +2,11 @@
 session_start();
 if (!isset($_SESSION['type'])) {
   $_SESSION['type'] = 'none';
+  $_SESSION['lastpage'] = "index.php";
 }
 if ($_SESSION['type'] == 'user') {
   header("location:app/home.php");
-} elseif ($_SESSION['type'] == 'admin') {
+} elseif ($_SESSION['type'] == 'admin' || $_SESSION['type']=='superadmin') {
   header("location:admin/showdata.php");
 }
 ?>
@@ -35,7 +36,7 @@ if ($_SESSION['type'] == 'user') {
         <input class="form-control mb-2" type="text" placeholder="Enter Username" name="uname" required>
         <label for="psw" class="mb-2"><b>Password</b></label>
         <input class="form-control mb-2" type="password" placeholder="Enter Password" name="psw" required>
-        <a href="./register.php" class="mb-2">ลงทะเบียน</a>
+        <a href="./registeruser.php" class="mb-2">ลงทะเบียน</a>
         <button type="submit" class="btn btn-primary mt-2">Login</button>
       </div>
     

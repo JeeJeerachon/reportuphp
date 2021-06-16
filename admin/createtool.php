@@ -1,6 +1,7 @@
 <?php
 $content = "admin";
 require "../auth/sessionpersist.php"
+$_SESSION['lastpage'] = "../admin/createtool.php"
 ?>
 <!DOCTYPE html>
 <html>

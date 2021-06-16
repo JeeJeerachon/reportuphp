@@ -1,7 +1,7 @@
 <?php
 $content = "admin";
 require "../auth/sessionpersist.php";
-$_SESSION['lastpage'] = "../admin/showdata.php";
+$_SESSION['lastpage'] = "../admin/showdataprogess.php";
 ?>
 
 <!DOCTYPE html>

@@ -7,6 +7,7 @@ $Fname = $_POST['Fname'];
 $Lname = $_POST['Lname'];
 $tel = $_POST['telnum'];
 $access = $_POST['acc'];
+$page = $_SESSION["lastpage"];
 
 if ($pass == $pass2) {
     /* $uname =$_SESSION["Username"]; */
@@ -15,16 +16,16 @@ if ($pass == $pass2) {
     if ($result) {
         echo "success";
         echo "<script>alert('สมัครสมาชิกเรียบร้อย');
-            window.location.href='../app/register.php';
+        window.location.assign('$page');
         </script>";
     } else {
         echo "fail";
         echo "<script>alert('มีผู้ใช้นี้อยู่แล้ว');
-            window.location.href='../app/register.php';
+        window.location.assign('$page');
         </script>";
     }
 } else {
     echo "<script>alert('พาสเวิร์ดไม่ตรงกัน');
-            window.location.href='../app/register.php';
+        window.location.assign('$page');
         </script>";
 }
