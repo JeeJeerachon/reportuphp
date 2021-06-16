@@ -121,11 +121,11 @@ $_SESSION['target'] = $target;
             <div>
               <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="toggledisable()">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"  value="option1" onchange="toggledisable()">
                 <label class="form-check-label" for="inlineRadio1">ใช่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable()" checked>
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"  value="option2" onchange="toggledisable()" checked>
                 <label class="form-check-label" for="inlineRadio2">ไม่ใช่</label>
               </div>
             </div>
@@ -136,27 +136,27 @@ $_SESSION['target'] = $target;
 
               <p>มีความประสงค์ซ่อม</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup1" value='1' disabled>
+                <input class="form-check-input" type="checkbox" id="longcup1" value="ครุภัณฑ์การแพทย์" name="k1" disabled>
                 <label class="form-check-label" for="longcup1">ครุภัณฑ์การแพทย์</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup2" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup2" value="ครุภัณฑ์สำนักงาน" name="k2" disabled>
                 <label class="form-check-label" for="longcup2">ครุภัณฑ์สำนักงาน</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup3" disabled> 
+                <input class="form-check-input" type="checkbox" id="longcup3" value="3" name="k3" disabled> 
                 <label class="form-check-label" for="longcup3">ครุภัณฑ์คอมพิวเตอร์</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup4" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup4" value="4" name="k4" disabled>
                 <label class="form-check-label" for="longcup4">ระบบปรับอากาศ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup5" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup5" value="5" name="k5" disabled>
                 <label class="form-check-label" for="longcup5">ระบบไฟฟ้า</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup6" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup6" value="6" name="k6" disabled>
                 <label class="form-check-label" for="longcup6">ระบบสุขาภิบาล</label>
               </div>
               <br>
@@ -190,23 +190,23 @@ $_SESSION['target'] = $target;
 
               <p>ส่วนที่ 2</p>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup7" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup7" value="7" name="k7" disabled>
                 <label class="form-check-label" for="longcup7">ช่างระบบปรับอากาศ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup8" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup8" value="8" name="k8" disabled>
                 <label class="form-check-label" for="longcup8">ช่างระบบไฟฟ้า</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup9" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup9" value="9" name="k9" disabled>
                 <label class="form-check-label" for="longcup9">ช่างระบบสุขาภิบาล</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup10" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup10" value="10" name="k10" disabled>
                 <label class="form-check-label" for="longcup10">ช่างครุภัณฑ์การแพทย์</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup11" disabled>
+                <input class="form-check-input" type="checkbox" id="longcup11" value="11" name="k11" disabled>
                 <label class="form-check-label" for="longcup11">ช่างครุภัณฑ์คอมพิวเตอร์</label>
               </div>
               <br>

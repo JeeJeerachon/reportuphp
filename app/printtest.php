@@ -1,4 +1,9 @@
 <?php
+// if ($_POST['inlineRadioOptions'] == "option1") {
+//     $realfrom = "Realform2.pdf";
+// } else {
+//     $realfrom = "Realform.pdf";
+// }
 // Require composer autoload
 session_start();
 $target = $_SESSION['target'];
@@ -18,12 +23,38 @@ $mpdf = new \Mpdf\Mpdf([
         ]
     ],
 ]);
-$pagecount = $mpdf->SetSourceFile('Realform.pdf');
+$pagecount = $mpdf->SetSourceFile("Realform.pdf");
 $import_page = $mpdf->ImportPage(1);
 $mpdf->UseTemplate($import_page);
 
 
 ob_start(); // Start get HTML code
+
+// รับค่า
+if (isset($_POST['k1'])) {
+    $x = $_POST['k1'];
+}
+if (isset($_POST['k2'])) {
+}
+if (isset($_POST['k3'])) {
+}
+if (isset($_POST['k4'])) {
+}
+if (isset($_POST['k5'])) {
+}
+if (isset($_POST['k6'])) {
+}
+if (isset($_POST['k7'])) {
+}
+if (isset($_POST['k8'])) {
+}
+if (isset($_POST['k9'])) {
+}
+if (isset($_POST['k10'])) {
+}
+if (isset($_POST['k11'])) {
+}
+
 ?>
 
 
@@ -33,6 +64,12 @@ ob_start(); // Start get HTML code
 <head>
     <title>PDF</title>
     <style>
+        .sa {
+            position: absolute;
+            text-align: center;
+            top: 150px;
+            right: 635px;
+        }
         body {
             font-family: niramit;
             font-size: 14px;
@@ -76,25 +113,68 @@ ob_start(); // Start get HTML code
         .des {
             position: absolute;
             top: 235px;
+            left: 59px;
+        }
+
+        .dess {
+            position: absolute;
+            top: 235px;
             left: 190px;
         }
+
         .user {
             position: absolute;
             text-align: center;
             top: 320px;
             right: 535px;
         }
+
         .userM {
             position: absolute;
             text-align: center;
             top: 297px;
             right: 220px;
         }
+
+        .bg {
+            background-color: white;
+            position: absolute;
+            width: 65%;
+            height: 40px;
+            top: 169px;
+            left: 220px;
+        }
+        .bg2 {
+            background-color: white;
+            position: absolute;
+            width: 65%;
+            height: 20px;
+            top: 190px;
+            left: 55px;
+        }
+        .bg3 {
+            background-color: white;
+            position: absolute;
+            width: 88%;
+            height: 40px;
+            top: 255px;
+            left: 55px;
+        }
+        .bg4 {
+            background-color: white;
+            position: absolute;
+            width: 30%;
+            height: 129px;
+            top: 485px;
+            left: 50px;
+        }
     </style>
 
 </head>
 
 <body>
+
+
     <div class="cas">
         <p> <?php echo "0" . $_SESSION['cid']; ?></p>
     </div>
@@ -111,15 +191,20 @@ ob_start(); // Start get HTML code
         <p><?php echo $_SESSION['tim']; ?></p>
     </div>
     
+    <div class="bg"></div>
+    <div class="bg2"></div>
+    <div class="bg3"></div>
+    <div class="bg4"></div>
+
     <div class="des">
-        <p><?php echo $_SESSION['des']; ?></p>
+        <p><?php echo "อาการเสีย/เหตุผล   " . $_SESSION['des']; ?></p>
     </div>
     <!-- ชื่อผู้แจ้ง -->
     <div class="user">
-        <p><?php echo $_SESSION['fname'] ."  ". $_SESSION['lname'];?></p>
-       
+        <p><?php echo $_SESSION['fname'] . "  " . $_SESSION['lname']; ?></p>
+
     </div>
-    
+
 </body>
 
 </html>
