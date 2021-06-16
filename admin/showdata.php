@@ -146,7 +146,10 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
                               <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                             </div>
                             <div class='modal-body'>
-                              โปรดยืนยันการลบรายงาน
+                              โปรดกรอกเหตุผลการลบรายงาน
+                              <div class='input-group'>
+                                <textarea class='form-control' aria-label='With textarea'></textarea>
+                              </div>
                             </div>
                             <div class='modal-footer'>
                               <button type='button' class='btn btn-danger' data-bs-dismiss='modal'>ยกเลิก</button>
