@@ -120,49 +120,109 @@ $_SESSION['target'] = $target;
             </div>
             <div>
               <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
-              <div class="custom-control custom-radio custom-control-inline" style="display: inline-block;">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline1">ใช่</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">ใช่</label>
               </div>
-              <div class="custom-control custom-radio custom-control-inline" style="display: inline-block;">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                <label class="custom-control-label" for="customRadioInline2">ไม่ใช่</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable('tray')" <?php if ($row['tray'] != 0) {
+                                                                                                                                                            echo 'checked';
+                                                                                                                                                          } ?>>
+                <label class="form-check-label" for="inlineRadio2">ไม่ใช่</label>
               </div>
             </div>
+
             <!-- ปรับแก้ pdf -->
-            <div>
+            <div id="tray">
               <p>ส่วนที่ 1</p>
               <?php
               $m = 1;
+              echo 'มีความประสงค์ซ่อม';
               while ($m <= 6) {
               ?>
-                <div class="custom-control custom-checkbox" style="display: inline-block;">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">but <?php echo $m; ?></label>
-                  <button type="button" class="btn btn-danger">ลบ</button>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1"><?php echo $m; ?></label>
                 </div>
               <?php
                 $m += 1;
               }
               ?>
-              <button type="button" class="btn btn-light">เพิ่มครุภัณฑ์</button>
+              <!-- Button trigger modal -->
+              <form action="" method="POST">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  เพิ่มครุภัณฑ์
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ครุภัณฑ์</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" placeholder="กรอกชื่อครุภัณฑ์" aria-label="Username">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="button" class="btn btn-primary">บันทึก</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
               <p>ส่วนที่ 2</p>
+
               <?php
-              $m1 = 1;
-              while ($m1 <= 3) {
+              $n = 1;
+              echo 'การมอบหมายให้';
+              while ($n <= 3) {
               ?>
-                <div class="custom-control custom-checkbox" style="display: inline-block;">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">ช่าง <?php echo $m; ?></label>
-                  <button type="button" class="btn btn-danger">ลบ</button>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1"><?php echo $n; ?></label>
                 </div>
               <?php
-                $m1 += 1;
+                $n += 1;
               }
               ?>
+              <form action="" method="POST">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                  เพิ่มช่าง
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModal1Label">ช่าง</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" placeholder="กรอกชื่อช่าง" aria-label="Username">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="button" class="btn btn-primary">บันทึก</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
+
+            <!-- ปุ่มปริ้น -->
             <button type="print" class="btn btn-primary">print</button>
           </div>
+
         </fieldset>
       </form>
     </div>
@@ -205,5 +265,17 @@ $_SESSION['target'] = $target;
   include '../components/footer.php'
   ?>
 </body>
+<script>
+  function toggledisable(target) {
+    if (document.getElementById(target).hasAttribute("disabled")) {
+      document.getElementById(target).removeAttribute("disabled");
+      console.log("i did it")
+    } else {
+      document.getElementById(target).setAttribute("disabled", "true")
+      console.log("nani")
+    }
+
+  }
+</script>
 
 </html>
