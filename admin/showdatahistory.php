@@ -39,6 +39,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                   <!-- <th scope="col">วันที่</th> -->
                   <th scope="col">สถานะ</th>
                   <th scope="col">ผู้ดำเนินการ</th>
+                  <th scope="col">หมายเหตุ</th>
                   <th scope="col">คำสั่ง</th>
                 </tr>
               </thead>
@@ -67,6 +68,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                     echo "<td><div class='badge bg-success text-white'>" . $row["Stat"] . "</div></td>";
                     //echo "<td><button id='" . $row['Case_ID'] . "' onclick = >Accept</button></td>" ;
                     echo "<td>" . $row["Worker"] . "</td>";
+                    echo "<td>" . $row["why"] . "</td>";
                     echo "<td> <div class='btn-group' role='group' aria-label='Basic mixed styles example'>";
                     echo "<form target='_blank' action='../admin/jobdetail.php' method='POST'><input type='hidden' name='job' value='" . $row["Case_ID"] . "'/>
                   <button type='submit' class='btn btn-warning' name='submit-btn' title='รายละเอียดประวัติแจ้งซ่อม'value='รายละเอียด'>
