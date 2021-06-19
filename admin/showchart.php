@@ -17,7 +17,17 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
 
 <body>
     <?php
-    include '../components/navbaradmin.php'
+    include '../components/navbaradmin.php';
+    require("../DB/connect.php");
+    $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location DESC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    while ($rowq = mysqli_fetch_array($result)) {
+        $toplocsum = $rowq['sum_location'] ;
+        $toploc = $rowq['Location'];
+    }
+    
+
+
     ?>
     <br>
     <div class="container">
@@ -35,8 +45,8 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                             <p></p>
                             <h4 class="my-3">รายละเอียด</h3>
                                 <ul>
-                                    <li>คอมพิวเตอร์</li>
-                                    <li>ปริ้นเตอร์</li>
+                                    <li><?php echo $toplocsum; ?></li>
+                                    <li><?php echo $toploc; ?></li>
                                     <li>อื่นๆ</li>
                                 </ul>
                     </div>
