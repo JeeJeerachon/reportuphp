@@ -25,32 +25,16 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $toplocsum = $rowq['sum_location'] ;
         $toploc = $rowq['Location'];
     }
-    
-
+    $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem DESC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    while ($rowqq = mysqli_fetch_array($result)) {
+        $topprosum = $rowqq['sum_problem'] ;
+        $toppro = $rowqq['Problem'];
+    }
 
     ?>
     <br>
     <div class="container">
-<<<<<<< HEAD
-    <div  class="main-1">
-        <div class="shadow p-3  bg-white rounded">
-            <div class="card-body p-5">
-                <h4 class="my-4">สถิติการแจ้งซ่อม</h4>
-                <div class="row">
-                    <div class="col-md-4">
-                        <canvas id="myChart" width="400" height="00"></canvas>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="my-4">
-                            </h3>
-                            <p></p>
-                            <h4 class="my-3">รายละเอียด</h3>
-                                <ul>
-                                    <li><?php echo $toplocsum; ?></li>
-                                    <li><?php echo $toploc; ?></li>
-                                    <li>อื่นๆ</li>
-                                </ul>
-=======
         <div class="main-1">
             <div class="shadow p-3  bg-white rounded">
                 <div class="card-body p-5">
@@ -76,7 +60,6 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                                 </h4>
                             </h4>
                         </div>
->>>>>>> 816f1b5af561492d9d491b323d8076a14344e192
                     </div>
                 </div>
             </div>
