@@ -26,29 +26,45 @@ $mpdf->UseTemplate($import_page);
 ob_start(); // Start get HTML code
 
 // รับค่า
+$x = array();
+$x2 = array();
+
 if (isset($_POST['k1'])) {
-    $x = $_POST['k1'];
+    array_push($x, $_POST['k1']);
 }
 if (isset($_POST['k2'])) {
+    array_push($x, $_POST['k2']);
 }
 if (isset($_POST['k3'])) {
+    array_push($x, $_POST['k3']);
 }
 if (isset($_POST['k4'])) {
+    array_push($x, $_POST['k4']);
 }
 if (isset($_POST['k5'])) {
+    array_push($x, $_POST['k5']);
 }
 if (isset($_POST['k6'])) {
+    array_push($x, $_POST['k6']);
 }
 if (isset($_POST['k7'])) {
+    array_push($x2, $_POST['k7']);
 }
 if (isset($_POST['k8'])) {
+    array_push($x2, $_POST['k8']);
 }
 if (isset($_POST['k9'])) {
+    array_push($x2, $_POST['k9']);
 }
 if (isset($_POST['k10'])) {
+    array_push($x2, $_POST['k10']);
 }
 if (isset($_POST['k11'])) {
+    array_push($x2, $_POST['k11']);
 }
+$y = count($x);
+$y2 = count($x2);
+
 
 ?>
 
@@ -135,19 +151,11 @@ if (isset($_POST['k11'])) {
         .bg {
             background-color: white;
             position: absolute;
-            width: 65%;
+            width: 88%;
             height: 40px;
             top: 169px;
-            left: 220px;
-        }
-
-        .bg2 {
-            background-color: white;
-            position: absolute;
-            width: 65%;
-            height: 20px;
-            top: 190px;
             left: 55px;
+            z-index: -1;
         }
 
         .bg3 {
@@ -157,6 +165,7 @@ if (isset($_POST['k11'])) {
             height: 40px;
             top: 255px;
             left: 55px;
+            z-index: -1;
         }
 
         .bg4 {
@@ -166,6 +175,28 @@ if (isset($_POST['k11'])) {
             height: 129px;
             top: 485px;
             left: 50px;
+            z-index: -1;
+        }
+
+        .text {
+            position: absolute;
+            width: 85%;
+            top: 153px;
+            left: 55px;
+        }
+
+        .chackbox2 {
+            position: absolute;
+            width: 30%;
+            height: 129px;
+            top: 485px;
+            left: 50px;
+        }
+
+        #chackbox {
+            width: 10px;
+
+
         }
     </style>
 
@@ -192,19 +223,45 @@ if (isset($_POST['k11'])) {
 
     <!-- ส่วนเปลี่ยนแปลง -->
     <?php
-    while ($a <= 10) {
-        # code...
-    }
+    // while ($a <= 10) {
+    //     # code...
+    // }
     ?>
     <?php
     if ($_POST['inlineRadioOptions'] == "option1") {
     ?>
-        <div class="bg">
-            <p> <?php echo $x; ?></p>
+        <div class="bg"></div>
+        <div class="text">
+            <p>มีความประสงค์ซ่อมแซม ดังนี้
+                <?php
+                $z = $y;
+                while ($y > 0) {
+                    $a = $z - $y;
+                    echo "<input id='chackbox' type='checkbox'>" . "<label>" . $x[$a] . "</label>";
+                    $y -= 1;
+                }
+
+                ?>
+            </p>
         </div>
         <div class="bg2"></div>
         <div class="bg3"></div>
         <div class="bg4"></div>
+        <div class="chackbox2">
+            <?php
+            $z2 = $y2;
+            while ($y2 > 0) {
+                $b = $z2 - $y2;
+                echo "<p><input id='chackbox' type='checkbox'>"  . $x2[$b] . "</p>";
+                $y2 -= 1;
+            }
+            ?>
+            <p><?php //echo $x2[0],$x2[1],$x2[3]; 
+                ?></p>
+        </div>
+        <div class="des">
+            <p><?php echo "อาการเสีย/เหตุผล   " . $_SESSION['des']; ?></p>
+        </div>
     <?php
     } else {
     ?>
@@ -215,9 +272,7 @@ if (isset($_POST['k11'])) {
     }
     ?>
 
-    <div class="des">
-        <p><?php echo "อาการเสีย/เหตุผล   " . $_SESSION['des']; ?></p>
-    </div>
+
     <!-- ชื่อผู้แจ้ง -->
     <div class="user">
         <p><?php echo $_SESSION['fname'] . "  " . $_SESSION['lname']; ?></p>
@@ -239,7 +294,9 @@ $import_page = $mpdf->ImportPage(2);
 $mpdf->UseTemplate($import_page);
 $mpdf->Output("ใบแจ้งซ่อมที่" . $_SESSION['cid'] . ".pdf");
 ob_end_flush();
-header("location:ใบแจ้งซ่อมที่" . $_SESSION['cid'] . ".pdf");
+echo "<script type='text/javascript'>";
+echo "window.location.assign('ใบแจ้งซ่อมที่" . $_SESSION['cid'] . ".pdf')";
+echo "</script>";
 ?>
 
 <!-- ดาวโหลดรายงานในรูปแบบ PDF <a href="MyPDF.pdf">คลิกที่นี้</a> -->

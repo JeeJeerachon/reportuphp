@@ -31,6 +31,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     ?>
     <br>
     <div class="container">
+<<<<<<< HEAD
     <div  class="main-1">
         <div class="shadow p-3  bg-white rounded">
             <div class="card-body p-5">
@@ -49,24 +50,51 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                                     <li><?php echo $toploc; ?></li>
                                     <li>อื่นๆ</li>
                                 </ul>
+=======
+        <div class="main-1">
+            <div class="shadow p-3  bg-white rounded">
+                <div class="card-body p-5">
+                    <h4 class="my-4">สถิติการแจ้งซ่อม</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <canvas id="myChart" width="400" height="00"></canvas>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="my-4">
+                                <h4 class="my-3">รายละเอียด</h3>
+                                    <ul>
+                                        <?php
+                                        require '../DB/connect.php';
+                                        $result = mysqli_query($con, "SELECT * FROM tool");
+                                        if ($result) {
+                                            while ($row = mysqli_fetch_array($result)) {
+                                                echo "<li>" . $row["toolname"] . "</li>";
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </h4>
+                            </h4>
+                        </div>
+>>>>>>> 816f1b5af561492d9d491b323d8076a14344e192
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+    <!-- chart สถิตห้องที่แจ้งซ่อม -->
     <div class="container">
-    <div  class="main-1">
-        <div class="shadow p-3  bg-white rounded">
-            <div class="card-body p-5">
-                <h4 class="my-4">สถิตห้องที่แจ้งซ่อม</h4>
-                <div class="row">
-                    <div class="col-md-8">
+        <div class="main-1">
+            <div class="shadow p-3  bg-white rounded">
+                <div class="card-body p-5">
+                    <h4 class="my-4">สถิตห้องที่แจ้งซ่อม</h4>
+                    <div class="row">
+                        <div class="col-md-8">
 
-                        <canvas id="myChart2" width="200" height="200"></canvas>
+                            <canvas id="myChart2" width="200" height="200"></canvas>
+                        </div>
+
                     </div>
-
-                </div>
                 </div>
             </div>
         </div>
@@ -94,6 +122,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     }
     ?>
     <script src="../js/Chart.js"></script>
+    <!-- chart1 สถิติการแจ้งซ่อม -->
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -135,6 +164,8 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
             }
         });
     </script>
+    
+    <!-- chart2 สถิตห้องที่แจ้งซ่อม -->
     <script>
         var cty = document.getElementById('myChart2').getContext('2d');
         Chart.defaults.global.defaultFontFamily = '';

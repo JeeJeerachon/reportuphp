@@ -30,7 +30,7 @@ $_SESSION['lastpage'] = "../app/room.php";
                         <h1>รายการห้อง</h1>
                     </div>
 
-                    <div class="p-2 bd-highlight"> <a  class="link-success" href="../admin/createroom.php">เพิ่มห้อง</a></div>
+                    <div class="p-2 bd-highlight"> <a class="link-success" href="../admin/createroom.php">เพิ่มห้อง</a></div>
                 </div>
                 <div class="table-responsive">
                     <table id="myTable" class="table table-hover table-sm">
