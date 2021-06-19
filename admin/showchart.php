@@ -17,7 +17,21 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
 
 <body>
     <?php
-    include '../components/navbaradmin.php'
+    include '../components/navbaradmin.php';
+    require("../DB/connect.php");
+    $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location DESC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    while ($rowq = mysqli_fetch_array($result)) {
+        $toplocsum = $rowq['sum_location'] ;
+        $toploc = $rowq['Location'];
+    }
+    $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem DESC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    while ($rowqq = mysqli_fetch_array($result)) {
+        $topprosum = $rowqq['sum_problem'] ;
+        $toppro = $rowqq['Problem'];
+    }
+
     ?>
     <br>
     <div class="container">
