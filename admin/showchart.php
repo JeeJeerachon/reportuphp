@@ -20,15 +20,15 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     include '../components/navbaradmin.php';
     require("../DB/connect.php");
     $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location DESC LIMIT 1";
-    $result = mysqli_query($con,$query);
+    $result = mysqli_query($con, $query);
     while ($rowq = mysqli_fetch_array($result)) {
-        $toplocsum = $rowq['sum_location'] ;
+        $toplocsum = $rowq['sum_location'];
         $toploc = $rowq['Location'];
     }
     $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem DESC LIMIT 1";
-    $result = mysqli_query($con,$query);
+    $result = mysqli_query($con, $query);
     while ($rowqq = mysqli_fetch_array($result)) {
-        $topprosum = $rowqq['sum_problem'] ;
+        $topprosum = $rowqq['sum_problem'];
         $toppro = $rowqq['Problem'];
     }
 
@@ -46,21 +46,23 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h4 class="my-4">
-                                <h4 class="my-3">รายละเอียด</h3>
-                                    <ul>
-                                        <?php
-                                        require '../DB/connect.php';
-                                        $result = mysqli_query($con, "SELECT * FROM tool");
-                                        if ($result) {
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                echo "<li>" . $row["toolname"] . "</li>";
-                                            }
+                            <h3>รายละเอียด</h3>
+                                <ul>
+                                    <?php
+                                    require '../DB/connect.php';
+                                    $result = mysqli_query($con, "SELECT * FROM tool");
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo "<li>" . $row["toolname"] . "</li>";
                                         }
-                                        ?>
-                                    </ul>
-                                </h4>
+                                    }
+                                    ?>
+                                </ul>
                             </h4>
+                        </div>
+                        <div class="col-md-2">
+                            <h3>สรุป</h3>
+                                <p>รายการที่แจ้งมากที่สุด: <?php echo $toppro .' : '. $topprosum . ' ครั้ง'; ?></p>
                         </div>
                     </div>
                 </div>
@@ -75,21 +77,25 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                 <div class="card-body p-5">
                     <h4 class="my-4">สถิตห้องที่แจ้งซ่อม</h4>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <canvas id="myChart2" width="400" height="400"></canvas>
                         </div>
                         <div class="col-md-2">
+                            <h3>รายละเอียด</h3>
                             <?php
                             require '../DB/connect.php';
-                            $result = mysqli_query($con, "SELECT * FROM tool");
+                            $result = mysqli_query($con, "SELECT * FROM room");
                             if ($result) {
                                 while ($row = mysqli_fetch_array($result)) {
-                                    echo "<li>" . $row["toolname"] . "</li>";
+                                    echo "<li>" . $row["roomname"] . "</li>";
                                 }
                             }
                             ?>
                         </div>
-
+                        <div class="col-md-2">
+                        <h3>สรุป</h3>
+                                <p>รายการที่แจ้งมากที่สุด: <?php echo $toploc .' : '. $toplocsum . ' ครั้ง'; ?></p>
+                        </div>
 
                     </div>
                 </div>
