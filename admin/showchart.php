@@ -19,19 +19,34 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     <?php
     include '../components/navbaradmin.php';
     require("../DB/connect.php");
+    #ห้อง มากสุด
     $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location DESC LIMIT 1";
     $result = mysqli_query($con, $query);
     while ($rowq = mysqli_fetch_array($result)) {
         $toplocsum = $rowq['sum_location'];
         $toploc = $rowq['Location'];
     }
+    #ชนิด มากสุด
     $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem DESC LIMIT 1";
     $result = mysqli_query($con, $query);
     while ($rowqq = mysqli_fetch_array($result)) {
         $topprosum = $rowqq['sum_problem'];
         $toppro = $rowqq['Problem'];
     }
-
+    #ห้อง น้อยสุด
+    $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location ASC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    while ($rowq1 = mysqli_fetch_array($result)) {
+        $botlocsum = $rowq1['sum_location'] ;
+        $botloc = $rowq1['Location'];
+    }
+    #ชนิด น้อยสุด
+    $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem ASC LIMIT 1";
+    $result = mysqli_query($con,$query);
+    while ($rowqq2 = mysqli_fetch_array($result)) {
+        $botprosum = $rowqq2['sum_problem'];
+        $botpro = $rowqq2['Problem'];
+    }
     ?>
     <br>
     <div class="container">
