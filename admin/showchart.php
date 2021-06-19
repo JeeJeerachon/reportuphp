@@ -78,6 +78,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                         <div class="col-md-2">
                             <h3>สรุป</h3>
                                 <p>รายการที่แจ้งมากที่สุด: <?php echo $toppro .' : '. $topprosum . ' ครั้ง'; ?></p>
+                                <p>รายการที่แจ้งน้อยที่สุด: <?php echo $botpro .' : '. $botprosum . ' ครั้ง'; ?></p>
                         </div>
                     </div>
                 </div>
@@ -110,6 +111,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                         <div class="col-md-2">
                         <h3>สรุป</h3>
                                 <p>รายการที่แจ้งมากที่สุด: <?php echo $toploc .' : '. $toplocsum . ' ครั้ง'; ?></p>
+                                <p>รายการที่แจ้งน้อยที่สุด: <?php echo $botloc .' : '. $botlocsum . ' ครั้ง'; ?></p>
                         </div>
 
                     </div>
