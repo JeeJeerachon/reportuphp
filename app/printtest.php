@@ -1,9 +1,4 @@
 <?php
-// if ($_POST['inlineRadioOptions'] == "option1") {
-//     $realfrom = "Realform2.pdf";
-// } else {
-//     $realfrom = "Realform.pdf";
-// }
 // Require composer autoload
 session_start();
 $target = $_SESSION['target'];
@@ -70,6 +65,7 @@ if (isset($_POST['k11'])) {
             top: 150px;
             right: 635px;
         }
+
         body {
             font-family: niramit;
             font-size: 14px;
@@ -144,6 +140,7 @@ if (isset($_POST['k11'])) {
             top: 169px;
             left: 220px;
         }
+
         .bg2 {
             background-color: white;
             position: absolute;
@@ -152,6 +149,7 @@ if (isset($_POST['k11'])) {
             top: 190px;
             left: 55px;
         }
+
         .bg3 {
             background-color: white;
             position: absolute;
@@ -160,6 +158,7 @@ if (isset($_POST['k11'])) {
             top: 255px;
             left: 55px;
         }
+
         .bg4 {
             background-color: white;
             position: absolute;
@@ -190,11 +189,31 @@ if (isset($_POST['k11'])) {
     <div class="tim">
         <p><?php echo $_SESSION['tim']; ?></p>
     </div>
-    
-    <div class="bg"></div>
-    <div class="bg2"></div>
-    <div class="bg3"></div>
-    <div class="bg4"></div>
+
+    <!-- ส่วนเปลี่ยนแปลง -->
+    <?php
+    while ($a <= 10) {
+        # code...
+    }
+    ?>
+    <?php
+    if ($_POST['inlineRadioOptions'] == "option1") {
+    ?>
+        <div class="bg">
+            <p> <?php echo $x; ?></p>
+        </div>
+        <div class="bg2"></div>
+        <div class="bg3"></div>
+        <div class="bg4"></div>
+    <?php
+    } else {
+    ?>
+        <div class="dess">
+            <p><?php echo $_SESSION['des']; ?></p>
+        </div>
+    <?php
+    }
+    ?>
 
     <div class="des">
         <p><?php echo "อาการเสีย/เหตุผล   " . $_SESSION['des']; ?></p>
@@ -204,6 +223,7 @@ if (isset($_POST['k11'])) {
         <p><?php echo $_SESSION['fname'] . "  " . $_SESSION['lname']; ?></p>
 
     </div>
+
 
 </body>
 
