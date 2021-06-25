@@ -56,9 +56,12 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                     $color = 'bg-primary text-white';
                                 } elseif ($row["Stat"] == 'กำลังดำเนินการ') {
                                     $color = 'bg-warning text-dark';
-                                } else {
+                                }elseif ($row["Stat"] == 'ยกเลิก'){
+                                    $color = 'bg-danger text-white';
+                                } 
+                                else {
                                     $color = 'bg-success text-white';
-                                }
+                                } 
                                 
                                 echo "<tr>";
                                 echo "<td>" . $row["Case_ID"] . "</td>";

@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <br>
-        <form action="DB/dbregister.php" method="post">
+        <form action="DB/regisuser.php" method="post">
             <div class="main-1">
                 <div class="shadow-lg p-3"><a href="./index.php">Back</a>
                     <h1>ลงทะเบียน</h1>

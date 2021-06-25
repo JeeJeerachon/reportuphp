@@ -47,7 +47,8 @@ $_SESSION['lastpage'] = "../admin/showdataprogess.php";
           <tbody> 
             <?php
             require '../DB/connect.php';
-            $result = mysqli_query($con, "SELECT * FROM report Where stat = 'กำลังดำเนินการ'");
+            $q32=$_SESSION['Username'];
+            $result = mysqli_query($con, "SELECT * FROM report Where stat = 'กำลังดำเนินการ' and Worker = '$q32'");
 
             if ($result) {
 

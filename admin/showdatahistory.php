@@ -51,7 +51,16 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                 if ($result) {
 
                   while ($row = mysqli_fetch_array($result)) {
-
+                    if ($row["Stat"] == 'รอช่าง') {
+                      $color = 'bg-primary text-white';
+                  } elseif ($row["Stat"] == 'กำลังดำเนินการ') {
+                      $color = 'bg-warning text-dark';
+                  }elseif ($row["Stat"] == 'ยกเลิก'){
+                      $color = 'bg-danger text-white';
+                  } 
+                  else {
+                      $color = 'bg-success text-white';
+                  }
                     echo "<tr>";
                     echo "<td>" . $row["Case_ID"] . "</td>";
                     echo "<td>" . $row["Location"] . "</td>";
@@ -65,7 +74,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                     $date = date_create($row["Date"]);
                     echo "<td>" .  date_format($date, "d/m/Y") . "<br>" . $row["Time"] . "</td>";
                     // echo "<td>" . "</td>";
-                    echo "<td><div class='badge bg-success text-white'>" . $row["Stat"] . "</div></td>";
+                    echo "<td><div class=' badge " . $color . "'>" . $row["Stat"] . "</div></td>";
                     //echo "<td><button id='" . $row['Case_ID'] . "' onclick = >Accept</button></td>" ;
                     echo "<td>" . $row["Worker"] . "</td>";
                     echo "<td>" . $row["why"] . "</td>";

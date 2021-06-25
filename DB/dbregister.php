@@ -10,7 +10,6 @@ $access = $_POST['acc'];
 $page = $_SESSION["lastpage"];
 
 if ($pass == $pass2) {
-    /* $uname =$_SESSION["Username"]; */
     $adddata = "INSERT INTO user (Username,Password,firstname,lastname,Tel,Access) VALUE ('$name','$pass','$Fname','$Lname','$tel','$access')";
     $result = mysqli_query($con, $adddata);
     if ($result) {
