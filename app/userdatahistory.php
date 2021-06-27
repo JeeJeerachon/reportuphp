@@ -1,7 +1,8 @@
 <?php
-$content = "admin";
+$content = "user";
 require "../auth/sessionpersist.php";
-$_SESSION['lastpage'] = "../admin/showdatahistory.php";
+$_SESSION['lastpage'] = "../app/userdatahistory.php";
+$use = $_SESSION['Username'];
 ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -16,7 +17,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
 
 <body>
   <?php
-  include '../components/navbaradmin.php'
+  include '../components/navbar.php'
   ?>
   <br>
   <div class="container">
@@ -36,7 +37,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                   <th scope="col">ปัญหา</th>
                   <th scope="col">ชื่อ</th>
                   <th scope="col">เวลาที่แจ้ง</th>
-                  <th scope="col">เวลาเสร็จงาน</th>
+                  <th scope="col">เวลาที่เสร็จงาน</th>
                   <!-- <th scope="col">วันที่</th> -->
                   <th scope="col">สถานะ</th>
                   <th scope="col">ผู้ดำเนินการ</th>
@@ -47,7 +48,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
               <tbody>
                 <?php
                 require '../DB/connect.php';
-                $result = mysqli_query($con, "SELECT * FROM report WHERE stat = 'สำเร็จ' or stat = 'ยกเลิก' ");
+                $result = mysqli_query($con, "SELECT * FROM report WHERE Username = '$use' and stat = 'สำเร็จ' or 'ยกเลิก' ");
 
                 if ($result) {
 
@@ -72,7 +73,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
               width: 150px; /* กำหนดความกว้าง */ '>" . $row["Description"]  . "</p>" . "</td>";
                     // echo "<td>" . . "</td>";
                     echo "<td>" . $row["Username"] . "</td>";
-                    $date = date_create($row["finish"]);
+                    $date = date_create($row["Date"]);
                     echo "<td>" .  date_format($date, "d/m/Y") . "<br>" . $row["Time"] . "</td>";
                     $date2 = date_create($row["finish"]);
                     echo "<td>" .  date_format($date2, "d/m/Y H:i:s") . "</td>";

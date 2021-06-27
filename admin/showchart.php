@@ -47,6 +47,13 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $botprosum = $rowqq2['sum_problem'];
         $botpro = $rowqq2['Problem'];
     }
+    #ช่างที่ทำงานสำเร็จสูงสุด
+    $result9 = mysqli_query($con,"select count(Worker) as sum_worker ,Worker from report where Stat = 'สำเร็จ' group by Worker order by sum_worker DESC");
+    while ($rq = mysqli_fetch_array($result9)){
+        $bestworker = $rq['worker'];
+        $jobcount = $rq['sum_worker'];
+    }
+
     ?>
     <br>
     <div class="container">

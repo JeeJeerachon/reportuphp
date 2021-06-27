@@ -6,7 +6,7 @@ if (isset($_POST['tempId'])) {
   $idupd = $_POST['tempId'];
   $cause = $_POST['cause'];
   $sa = $_SESSION['Username'];
-  $upd = " UPDATE report SET stat = 'ยกเลิก' , Worker = '$sa' ,why = '$cause' WHERE Case_ID = '$idupd'";
+  $upd = " UPDATE report SET stat = 'ยกเลิก' , Worker = '$sa' , finish = NOW() ,why = '$cause' WHERE Case_ID = '$idupd'";
   $result = mysqli_query($con, $upd);
   if ($result) {
         echo "<script type=\"text/javascript\">";

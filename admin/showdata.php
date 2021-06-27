@@ -50,7 +50,6 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
             $result = mysqli_query($con, "SELECT * FROM report Where stat = 'รอช่าง'");
 
             if ($result) {
-
               while ($row = mysqli_fetch_array($result)) {
 
                 if ($row["Stat"] == 'รอช่าง') {
@@ -62,7 +61,10 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
                 }
 
                 echo "<tr>";
-                echo "<td>" . $row["Case_ID"] . "</td>";
+                echo "<td>" . $row["Case_ID"] ;
+                    if ($row['newupdate'] == 1 ){
+                      echo "<img src='../sign.png' width='10%' height='10px'>";
+                      }echo  "</td>";
                 echo "<td>" . $row["Location"] . "</td>";
                 echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
               text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 
@@ -122,7 +124,7 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
                 </form>";
                 }
                 // ปุ่มรายละเอียด
-                echo "<form target='_blank' action='../admin/jobdetail.php' method='POST'>
+                echo "<form  action='../admin/jobdetail.php' method='POST'>
                       <input type='hidden' name='job' value='" . $row["Case_ID"] . "'/>
                       <button type='submit' class='btn btn-warning' name='submit-btn' title='รายละเอียดแจ้งซ่อม'value='รายละเอียด'>
                       <span class='material-icons'>

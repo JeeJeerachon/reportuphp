@@ -45,7 +45,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                     <tbody>
                         <?php
                         require '../DB/connect.php';
-                        $result = mysqli_query($con, "SELECT * FROM report Where Username = '$uname' and stat != 'Done' order by stat");
+                        $result = mysqli_query($con, "SELECT * FROM report Where (Username = '$uname' and stat = 'รอช่าง') or (Username = '$uname' and stat = 'กำลังดำเนินการ') order by stat");
 
                         if ($result) {
                             $x=$_SESSION['Username'];
@@ -64,7 +64,12 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 } 
                                 
                                 echo "<tr>";
-                                echo "<td>" . $row["Case_ID"] . "</td>";
+                                echo "<td>" . $row["Case_ID"] ;
+                                if ($row['newupdate'] == 1 ){
+                                    echo "<img src='../sign.png' width='10%' height='10px'>";
+                                }
+                                
+                                echo  "</td>";
                                 echo "<td>" . $row["Location"] . "</td>";
                                 echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
           text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 

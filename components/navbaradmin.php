@@ -17,7 +17,7 @@ require_once("../DB/connect.php");
           <a class="nav-link" aria-current="page" href="../admin/showdata.php">งานแจ้งซ่อมที่ยังไม่ได้ทำ
           <?php
       require '../DB/connect.php';
-      $result = mysqli_query($con, "SELECT count(*) as total from report where stat = 'รอช่าง'");
+      $result = mysqli_query($con, "SELECT count(*) as total from report where stat = 'รอช่าง'and engupdate='1'");
       $data = mysqli_fetch_assoc($result);
       $sum = $data['total'];
       if ($sum > 0) { ?>
@@ -62,7 +62,9 @@ require_once("../DB/connect.php");
           echo "  : <tr class='fs-4' >" . $_SESSION['Username'] . "</tr>"; ?>
         </a>
         <ul class="dropdown-menu">
+        <?php if ($_SESSION['type']=='superadmin'){?>
           <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#Modelsuc">เปลี่ยน Token Line</a></li>
+          <?php } ?> 
           <li><a class="dropdown-item" href="../auth/logout.php">ออกจากระบบ</a></li>
         </ul>
       </span>

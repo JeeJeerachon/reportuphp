@@ -22,6 +22,7 @@ $_SESSION['target'] = $target;
       <form action="../app/printtest.php" target="_blank" method="post" name="F1">
         <fieldset>
           <div class="shadow-lg p-3 mb-5 bg-white rounded">
+          <div class="shadow-lg p-3"><a href="<?php echo $_SESSION['lastpage'];?>">Back</a>
             <legend>
               <h1>แจ้งซ่อม</h1>
             </legend>
@@ -30,7 +31,10 @@ $_SESSION['target'] = $target;
               require '../DB/connect.php';
               $result = mysqli_query($con, "SELECT * FROM report inner join user on report.Username=user.Username Where Case_ID = '$target' ");
               if ($result) {
-                while ($row = mysqli_fetch_array($result)) {
+                if ($_SESSION['type'] == 'admin' or $_SESSION['type'] == 'superadmin'){
+                  $result2 = mysqli_query($con,"UPDATE report SET engupdate = '0' where Case_ID = '$target' ");
+              }
+              while ($row = mysqli_fetch_array($result)) {
                   $date = date_create($row["Date"]);
               ?>
                   <table class='' style='width:100%'>
