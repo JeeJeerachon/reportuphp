@@ -22,156 +22,194 @@ $_SESSION['target'] = $target;
       <form action="../app/printtest.php" target="_blank" method="post" name="F1">
         <fieldset>
           <div class="shadow-lg p-3 mb-5 bg-white rounded">
-          <div class="shadow-lg p-3"><a href="<?php echo $_SESSION['lastpage'];?>">Back</a>
-            <legend>
-              <h1>แจ้งซ่อม</h1>
-            </legend>
-            <div class="mb-3 p-3" style="background-color: #F3F3F3;">
-              <?php
-              require '../DB/connect.php';
-              $result = mysqli_query($con, "SELECT * FROM report inner join user on report.Username=user.Username Where Case_ID = '$target' ");
-              if ($result) {
-                if ($_SESSION['type'] == 'admin' or $_SESSION['type'] == 'superadmin'){
-                  $result2 = mysqli_query($con,"UPDATE report SET engupdate = '0' where Case_ID = '$target' ");
-              }
-              while ($row = mysqli_fetch_array($result)) {
-                  $date = date_create($row["Date"]);
-              ?>
-                  <table class='' style='width:100%'>
-                    <thead>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>งานที่ : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo $row["Case_ID"]; ?></p>
-                        </td>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>สถานที่ : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo $row["Location"]; ?></p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>รายงานโดย : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo $row["Username"]; ?></p>
-                        </td>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>เวลา : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo $row["Time"]; ?></p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>วันที่ : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo date_format($date, "d/m/Y"); ?></p>
-                        </td>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>สถานะ : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo $row["Stat"]; ?></p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>ปัญหา : </p>
-                        </td>
-                        <td style='width:25%'>
-                          <p><?php echo $row["Problem"]; ?></p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style='width:25%'>
-                          <p class='fw-bold'>รายละเอียด : </p>
-                        </td>
-                        <td colspan='3' class='text-break' style='width:25%'>
-                          <p><?php echo $row["Description"]; ?></p>
-                        </td>
-                      </tr>
+            <div class="shadow-lg p-3"><a href="<?php echo $_SESSION['lastpage']; ?>">Back</a>
+              <legend>
+                <h1>แจ้งซ่อม</h1>
+              </legend>
+              <div class="mb-3 p-3" style="background-color: #F3F3F3;">
+                <?php
+                require '../DB/connect.php';
+                $result = mysqli_query($con, "SELECT * FROM report inner join user on report.Username=user.Username Where Case_ID = '$target' ");
+                if ($result) {
+                  if ($_SESSION['type'] == 'admin' or $_SESSION['type'] == 'superadmin') {
+                    $result2 = mysqli_query($con, "UPDATE report SET engupdate = '0' where Case_ID = '$target' ");
+                  }
+                  while ($row = mysqli_fetch_array($result)) {
+                    $date = date_create($row["Date"]);
+                ?>
+                    <table class='' style='width:100%'>
+                      <thead>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>งานที่ : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo $row["Case_ID"]; ?></p>
+                          </td>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>สถานที่ : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo $row["Location"]; ?></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>รายงานโดย : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo $row["Username"]; ?></p>
+                          </td>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>เวลา : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo $row["Time"]; ?></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>วันที่ : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo date_format($date, "d/m/Y"); ?></p>
+                          </td>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>สถานะ : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo $row["Stat"]; ?></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>ปัญหา : </p>
+                          </td>
+                          <td style='width:25%'>
+                            <p><?php echo $row["Problem"]; ?></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style='width:25%'>
+                            <p class='fw-bold'>รายละเอียด : </p>
+                          </td>
+                          <td colspan='3' class='text-break' style='width:25%'>
+                            <p><?php echo $row["Description"]; ?></p>
+                          </td>
+                        </tr>
 
-                    </tbody>
-                  </table>";
-              <?php
-                  $_SESSION['cid'] = $row["Case_ID"];
-                  $_SESSION['loc'] = $row["Location"];
-                  $_SESSION['pro'] = $row["Problem"];
-                  $_SESSION['des'] = $row["Description"];
-                  $_SESSION['user'] = $row["Username"];
-                  $_SESSION['tim'] = $row["Time"];
-                  $_SESSION['dat'] = date_format($date, "d/m/Y");
-                  $_SESSION['fname'] = $row["firstname"];
-                  $_SESSION['lname'] = $row["lastname"];
+                      </tbody>
+                    </table>";
+                <?php
+                    $_SESSION['cid'] = $row["Case_ID"];
+                    $_SESSION['loc'] = $row["Location"];
+                    $_SESSION['pro'] = $row["Problem"];
+                    $_SESSION['des'] = $row["Description"];
+                    $_SESSION['user'] = $row["Username"];
+                    $_SESSION['tim'] = $row["Time"];
+                    $_SESSION['dat'] = date_format($date, "d/m/Y");
+                    $_SESSION['fname'] = $row["firstname"];
+                    $_SESSION['lname'] = $row["lastname"];
+                  }
                 }
-              }
-              ?>
-            </div>
-            <div>
-              <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"  value="option1" onchange="toggledisable()">
-                <label class="form-check-label" for="inlineRadio1">ใช่</label>
+                ?>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"  value="option2" onchange="toggledisable()" checked>
-                <label class="form-check-label" for="inlineRadio2">ไม่ใช่</label>
+              <div>
+                <p style="display: inline-block;">ปรับเปลี่ยนแบบฟอร์ม</p>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" onchange="toggledisable()">
+                  <label class="form-check-label" for="inlineRadio1">ใช่</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" onchange="toggledisable()" checked>
+                  <label class="form-check-label" for="inlineRadio2">ไม่ใช่</label>
+                </div>
               </div>
-            </div>
 
-            <!-- ปรับแก้ pdf -->
-            <div>
-              <p>ส่วนที่ 1</p>
+              <!-- ปรับแก้ pdf -->
+              <div>
+                <p>ส่วนที่ 1</p>
 
-              <p>มีความประสงค์ซ่อม</p>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup1" value="ครุภัณฑ์การแพทย์" name="k1" disabled>
-                <label class="form-check-label" for="longcup1">ครุภัณฑ์การแพทย์</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup2" value="ครุภัณฑ์สำนักงาน" name="k2" disabled>
-                <label class="form-check-label" for="longcup2">ครุภัณฑ์สำนักงาน</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup3" value="ครุภัณฑ์คอมพิวเตอร์" name="k3" disabled> 
-                <label class="form-check-label" for="longcup3">ครุภัณฑ์คอมพิวเตอร์</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup4" value="ระบบปรับอากาศ" name="k4" disabled>
-                <label class="form-check-label" for="longcup4">ระบบปรับอากาศ</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup5" value="ระบบไฟฟ้า" name="k5" disabled>
-                <label class="form-check-label" for="longcup5">ระบบไฟฟ้า</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup6" value="ระบบสุขาภิบาล" name="k6" disabled>
-                <label class="form-check-label" for="longcup6">ระบบสุขาภิบาล</label>
-              </div>
-              <br>
-              <!-- Button trigger modal -->
-              <!-- <form action="" method="POST">
+                <p>มีความประสงค์ซ่อม</p>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="longcup1" value="ครุภัณฑ์การแพทย์" disabled>
+                  <label class="form-check-label" for="longcup1">
+                    ครุภัณฑ์การแพทย์
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="longcup2" value="ครุภัณฑ์สำนักงาน" disabled>
+                  <label class="form-check-label" for="longcup2">
+                    ครุภัณฑ์สำนักงาน
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="longcup3" value="ครุภัณฑ์คอมพิวเตอร์" disabled>
+                  <label class="form-check-label" for="longcup3">
+                    ครุภัณฑ์คอมพิวเตอร์
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="longcup4" value="ระบบปรับอากาศ" disabled>
+                  <label class="form-check-label" for="longcup4">
+                    ระบบปรับอากาศ
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="longcup5" value="ระบบไฟฟ้า" disabled>
+                  <label class="form-check-label" for="longcup5">
+                    ระบบไฟฟ้า
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="longcup6" value="ระบบสุขาภิบาล" disabled>
+                  <label class="form-check-label" for="longcup5">
+                    ระบบสุขาภิบาล
+                  </label>
+                </div>
+
+                <!-- <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup1" value="ครุภัณฑ์การแพทย์" name="k1" disabled>
+                  <label class="form-check-label" for="longcup1">ครุภัณฑ์การแพทย์</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup2" value="ครุภัณฑ์สำนักงาน" name="k2" disabled>
+                  <label class="form-check-label" for="longcup2">ครุภัณฑ์สำนักงาน</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup3" value="ครุภัณฑ์คอมพิวเตอร์" name="k3" disabled>
+                  <label class="form-check-label" for="longcup3">ครุภัณฑ์คอมพิวเตอร์</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup4" value="ระบบปรับอากาศ" name="k4" disabled>
+                  <label class="form-check-label" for="longcup4">ระบบปรับอากาศ</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup5" value="ระบบไฟฟ้า" name="k5" disabled>
+                  <label class="form-check-label" for="longcup5">ระบบไฟฟ้า</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup6" value="ระบบสุขาภิบาล" name="k6" disabled>
+                  <label class="form-check-label" for="longcup6">ระบบสุขาภิบาล</label>
+                </div> -->
+                <br>
+                <!-- Button trigger modal -->
+                <!-- <form action="" method="POST">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   เพิ่มครุภัณฑ์
                 </button> -->
 
-              <!-- Modal -->
-              <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -192,35 +230,66 @@ $_SESSION['target'] = $target;
                 </div>
               </form> -->
 
-              <p>ส่วนที่ 2</p>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup7" value="ช่างระบบปรับอากาศ" name="k7" disabled>
-                <label class="form-check-label" for="longcup7">ช่างระบบปรับอากาศ</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup8" value="ช่างระบบไฟฟ้า" name="k8" disabled>
-                <label class="form-check-label" for="longcup8">ช่างระบบไฟฟ้า</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup9" value="ช่างระบบสุขาภิบาล" name="k9" disabled>
-                <label class="form-check-label" for="longcup9">ช่างระบบสุขาภิบาล</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup10" value="ช่างครุภัณฑ์การแพทย์" name="k10" disabled>
-                <label class="form-check-label" for="longcup10">ช่างครุภัณฑ์การแพทย์</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="longcup11" value="ช่างครุภัณฑ์คอมพิวเตอร์" name="k11" disabled>
-                <label class="form-check-label" for="longcup11">ช่างครุภัณฑ์คอมพิวเตอร์</label>
-              </div>
-              <br>
-              <!-- <form action="" method="POST">
+                <p>ส่วนที่ 2</p>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios2" id="longcup7" value="ช่างระบบปรับอากาศ" disabled>
+                  <label class="form-check-label" for="longcup7">
+                    ช่างระบบปรับอากาศ
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios2" id="longcup8" value="ช่างระบบไฟฟ้า" disabled>
+                  <label class="form-check-label" for="longcup8">
+                    ช่างระบบไฟฟ้า
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios2" id="longcup9" value="ช่างระบบสุขาภิบาล" disabled>
+                  <label class="form-check-label" for="longcup9">
+                    ช่างระบบสุขาภิบาล
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios2" id="longcup10" value="ช่างครุภัณฑ์การแพทย์" disabled>
+                  <label class="form-check-label" for="longcup10">
+                    ช่างครุภัณฑ์การแพทย์
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios2" id="longcup11" value="ช่างครุภัณฑ์คอมพิวเตอร์" disabled>
+                  <label class="form-check-label" for="longcup11">
+                    ช่างครุภัณฑ์คอมพิวเตอร์
+                  </label>
+                </div>
+<!-- 
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup7" value="ช่างระบบปรับอากาศ" name="k7" disabled>
+                  <label class="form-check-label" for="longcup7">ช่างระบบปรับอากาศ</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup8" value="ช่างระบบไฟฟ้า" name="k8" disabled>
+                  <label class="form-check-label" for="longcup8">ช่างระบบไฟฟ้า</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup9" value="ช่างระบบสุขาภิบาล" name="k9" disabled>
+                  <label class="form-check-label" for="longcup9">ช่างระบบสุขาภิบาล</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup10" value="ช่างครุภัณฑ์การแพทย์" name="k10" disabled>
+                  <label class="form-check-label" for="longcup10">ช่างครุภัณฑ์การแพทย์</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="longcup11" value="ช่างครุภัณฑ์คอมพิวเตอร์" name="k11" disabled>
+                  <label class="form-check-label" for="longcup11">ช่างครุภัณฑ์คอมพิวเตอร์</label>
+                </div> -->
+                <br>
+                <!-- <form action="" method="POST">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                   เพิ่มช่าง
                 </button> -->
 
-              <!-- Modal -->
-              <!-- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -240,11 +309,11 @@ $_SESSION['target'] = $target;
                   </div>
                 </div>
               </form> -->
-            </div>
+              </div>
 
-            <!-- ปุ่มปริ้น -->
-            <button type="print" class="btn btn-primary">print</button>
-          </div>
+              <!-- ปุ่มปริ้น -->
+              <button type="print" class="btn btn-primary">print</button>
+            </div>
 
         </fieldset>
       </form>

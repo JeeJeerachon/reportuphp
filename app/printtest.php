@@ -29,39 +29,39 @@ ob_start(); // Start get HTML code
 $x = array();
 $x2 = array();
 
-if (isset($_POST['k1'])) {
-    array_push($x, $_POST['k1']);
+if (isset($_POST['exampleRadios'])) {
+    array_push($x, $_POST['exampleRadios']);
 }
-if (isset($_POST['k2'])) {
-    array_push($x, $_POST['k2']);
+// if (isset($_POST['k2'])) {
+//     array_push($x, $_POST['k2']);
+// }
+// if (isset($_POST['k3'])) {
+//     array_push($x, $_POST['k3']);
+// }
+// if (isset($_POST['k4'])) {
+//     array_push($x, $_POST['k4']);
+// }
+// if (isset($_POST['k5'])) {
+//     array_push($x, $_POST['k5']);
+// }
+// if (isset($_POST['k6'])) {
+//     array_push($x, $_POST['k6']);
+// }
+if (isset($_POST['exampleRadios2'])) {
+    array_push($x2, $_POST['exampleRadios2']);
 }
-if (isset($_POST['k3'])) {
-    array_push($x, $_POST['k3']);
-}
-if (isset($_POST['k4'])) {
-    array_push($x, $_POST['k4']);
-}
-if (isset($_POST['k5'])) {
-    array_push($x, $_POST['k5']);
-}
-if (isset($_POST['k6'])) {
-    array_push($x, $_POST['k6']);
-}
-if (isset($_POST['k7'])) {
-    array_push($x2, $_POST['k7']);
-}
-if (isset($_POST['k8'])) {
-    array_push($x2, $_POST['k8']);
-}
-if (isset($_POST['k9'])) {
-    array_push($x2, $_POST['k9']);
-}
-if (isset($_POST['k10'])) {
-    array_push($x2, $_POST['k10']);
-}
-if (isset($_POST['k11'])) {
-    array_push($x2, $_POST['k11']);
-}
+// if (isset($_POST['k8'])) {
+//     array_push($x2, $_POST['k8']);
+// }
+// if (isset($_POST['k9'])) {
+//     array_push($x2, $_POST['k9']);
+// }
+// if (isset($_POST['k10'])) {
+//     array_push($x2, $_POST['k10']);
+// }
+// if (isset($_POST['k11'])) {
+//     array_push($x2, $_POST['k11']);
+// }
 $y = count($x);
 $y2 = count($x2);
 

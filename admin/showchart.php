@@ -35,21 +35,21 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     }
     #ห้อง น้อยสุด
     $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location ASC LIMIT 1";
-    $result = mysqli_query($con,$query);
+    $result = mysqli_query($con, $query);
     while ($rowq1 = mysqli_fetch_array($result)) {
-        $botlocsum = $rowq1['sum_location'] ;
+        $botlocsum = $rowq1['sum_location'];
         $botloc = $rowq1['Location'];
     }
     #ชนิด น้อยสุด
     $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem ASC LIMIT 1";
-    $result = mysqli_query($con,$query);
+    $result = mysqli_query($con, $query);
     while ($rowqq2 = mysqli_fetch_array($result)) {
         $botprosum = $rowqq2['sum_problem'];
         $botpro = $rowqq2['Problem'];
     }
     #ช่างที่ทำงานสำเร็จสูงสุด
-    $result9 = mysqli_query($con,"select count(Worker) as sum_worker ,Worker from report where Stat = 'สำเร็จ' group by Worker order by sum_worker DESC");
-    while ($rq = mysqli_fetch_array($result9)){
+    $result9 = mysqli_query($con, "select count(Worker) as sum_worker ,Worker from report where Stat = 'สำเร็จ' group by Worker order by sum_worker DESC");
+    while ($rq = mysqli_fetch_array($result9)) {
         $bestworker = $rq['worker'];
         $jobcount = $rq['sum_worker'];
     }
@@ -69,23 +69,21 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                         </div>
                         <div class="col-md-4">
                             <h3>รายละเอียด</h3>
-                                <ul>
-                                    <?php
-                                    require '../DB/connect.php';
-                                    $result = mysqli_query($con, "SELECT * FROM tool");
-                                    if ($result) {
-                                        while ($row = mysqli_fetch_array($result)) {
-                                            echo "<li>" . $row["toolname"] . "</li>";
-                                        }
+                            <ul>
+                                <?php
+                                require '../DB/connect.php';
+                                $result = mysqli_query($con, "SELECT * FROM tool");
+                                if ($result) {
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        echo "<li>" . $row["toolname"] . "</li>";
                                     }
-                                    ?>
-                                </ul>
+                                }
+                                ?>
+                            </ul>
                             </h4>
                         </div>
                         <div class="col-md-2">
-                            <h3>สรุป</h3>
-                                <p>รายการที่แจ้งมากที่สุด: <?php echo $toppro .' : '. $topprosum . ' ครั้ง'; ?></p>
-                                <p>รายการที่แจ้งน้อยที่สุด: <?php echo $botpro .' : '. $botprosum . ' ครั้ง'; ?></p>
+
                         </div>
                     </div>
                 </div>
@@ -116,11 +114,35 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                             ?>
                         </div>
                         <div class="col-md-2">
-                        <h3>สรุป</h3>
-                                <p>รายการที่แจ้งมากที่สุด: <?php echo $toploc .' : '. $toplocsum . ' ครั้ง'; ?></p>
-                                <p>รายการที่แจ้งน้อยที่สุด: <?php echo $botloc .' : '. $botlocsum . ' ครั้ง'; ?></p>
+
                         </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-1">
+            <div class="shadow p-3  bg-white rounded">
+                <div class="card-body p-5">
+                    <h4 class="my-4">สรุป</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>สรุปอุปกรณ์ที่แจ้ง</h3>
+                            <p>อุปกรณ์ที่แจ้งมากที่สุด: <?php echo $toppro . ' : ' . $topprosum . ' ครั้ง'; ?></p>
+                            <p>อุปกรณ์ที่แจ้งน้อยที่สุด: <?php echo $botpro . ' : ' . $botprosum . ' ครั้ง'; ?></p>
+
+                        </div>
+                        <div class="col-md-4">
+                            <h3>สรุปรายการห้อง</h3>
+                            <p>ห้องที่แจ้งมากที่สุด: <?php echo $toploc . ' : ' . $toplocsum . ' ครั้ง'; ?></p>
+                            <p>ห้องที่แจ้งน้อยที่สุด: <?php echo $botloc . ' : ' . $botlocsum . ' ครั้ง'; ?></p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>ช่างที่ทำงานสำเร็จสูงสุด: <?php echo $bestworker . ' : ' . $jobcount . ' ครั้ง'; ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
