@@ -64,9 +64,9 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 } 
                                 
                                 echo "<tr>";
-                                echo "<td>" . $row["Case_ID"] ;
+                                echo "<td>" . $row["Case_ID"] . ' ';
                                 if ($row['newupdate'] == 1 ){
-                                    echo "<img src='../sign.png' width='10%' height='10px'>";
+                                    echo "<span class='badge bg-success'>Update</span>";
                                 }
                                 
                                 echo  "</td>";
