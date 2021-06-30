@@ -50,7 +50,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     #ช่างที่ทำงานสำเร็จสูงสุด
     $result9 = mysqli_query($con, "select count(Worker) as sum_worker ,Worker from report where Stat = 'สำเร็จ' group by Worker order by sum_worker DESC");
     while ($rq = mysqli_fetch_array($result9)) {
-        $bestworker = $rq['worker'];
+        $bestworker = $rq['Worker'];
         $jobcount = $rq['sum_worker'];
     }
 
