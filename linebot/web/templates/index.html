@@ -12,7 +12,7 @@
 
 <body>
   <div class="container">
-    <form action="/addToken" method="POST"></form>
+    <form action="/addToken" method="POST">
     <div class="main col-md-6 offset-md-3">
       <div class="text-center" style="margin-top: 5%;">
         <img src="https://upload.wikimedia.org/wikipedia/th/thumb/a/a4/UPHosLogo.svg/1024px-UPHosLogo.svg.png"
@@ -31,6 +31,7 @@
     <!-- <input type="text" name="user">
     <input type="text" name="pass"> -->
     <input type="hidden" id="token" name="token_line">
+    <!-- <p id="userId"></p> -->
     <!-- <input type="submit" value="login"> -->
     </form>
   </div>
@@ -39,18 +40,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>
+
   <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
   <script>
     function runApp() {
       liff.getProfile().then(profile => {
-        document.getElementById("pictureUrl").src = profile.pictureUrl;
-        document.getElementById("userId").innerHTML = '<b>UserId:</b> ' + profile.userId;
         document.getElementById('token').value = profile.userId;
       }).catch(err => console.error(err));
     }
-    liff.init({
-      liffId: "1656172230-rXaDQezw"
-    }, () => {
+    liff.init({liffId: "1656172230-rXaDQezw"}, () => {
       if (liff.isLoggedIn()) {
         runApp()
       } else {
@@ -58,6 +56,7 @@
       }
     }, err => console.error(err.code, error.message));
   </script>
+
 </body>
 
 </html>

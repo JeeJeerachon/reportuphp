@@ -1,15 +1,15 @@
 from flask import Flask,render_template,request
-# from flask_mysqldb import MySQL, MySQLdb
 
 app = Flask(__name__)
 
- app.config['MYSQL_USER']='root'
- app.config['MYSQL_PASSWORD']=''
- app.config['MYSQL_HOST']='localhost'
- app.config['MYSQL_DB']='sqltest1'
-# app.config['MYSQL_CURSORCLASS']='DictCursor'
+import pymysql.cursors
 
-mysql = MySQL(app)
+connection = pymysql.connect(host='localhost',
+                             user='root',
+                             password='',
+                             database='sqltest1',
+                             cursorclass=pymysql.cursors.DictCursor)
+
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
@@ -21,17 +21,19 @@ def addToken():
         username =request.form['user']
         password =request.form['pass']
         token = request.form['token_line']
+    print(username)
+    print(token)
+    insert_data(username,token)
+    return render_template("end.html")
 
-  #  print(username)
-   # print(password)
-    #print(token)
-
-    return "ควย"
-
- cur = mysql.connection.cursor()
- cur.execute("INSERT INTO line (Username,token) VALUES (%s,%s,%s)",(username,token)) 
- mysql.connection.commit() 
+def insert_data(username,token):
+    with connection:
+        with connection.cursor() as cursor:
+            sql = "INSERT INTO line (Username, token) VALUES (%s, %s)"
+            cursor.execute(sql, (username,token))
+        connection.commit()
 
 
 if __name__=="__main__":
     app.run()
+
