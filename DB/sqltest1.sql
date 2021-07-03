@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 09:35 AM
+-- Generation Time: Jul 03, 2021 at 02:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `line` (
   `Username` varchar(60) NOT NULL,
-  `token` varchar(30) NOT NULL
+  `token` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `line` (
 --
 
 INSERT INTO `line` (`Username`, `token`) VALUES
-('Pai007', '65103203210035132');
+('Jeerachon', 'U8c1a7c37aadf9134235c8afd04122496');
 
 -- --------------------------------------------------------
 
@@ -84,12 +84,15 @@ INSERT INTO `report` (`Case_ID`, `Location`, `Problem`, `Description`, `Time`, `
 (149, 'Emergency', 'ประตู,หน้าต่าง', 'ประตูเป็นรู ปลวกกิน', '16:01:50', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-16 16:15:53'),
 (150, 'Laboratory', 'ประตู,หน้าต่าง', 'test', '15:24:34', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-30 14:32:29'),
 (153, 'Emergency', 'เครื่องปริ้น', 'test', '15:25:30', '2021-06-25', '', 'สำเร็จ', 'aof007', 'teerat', '', 1, 1, '2021-06-25 18:12:20'),
-(155, 'Emergency', 'เครื่องปริ้น', 'test', '15:52:18', '2021-06-25', '', 'รอช่าง', 'aof007', 'ไม่มี', '', 0, 0, '0000-00-00 00:00:00'),
-(156, 'Office 7', 'เครื่องปริ้น', 'test', '15:52:34', '2021-06-25', '', 'รอช่าง', 'aof007', 'ไม่มี', '', 0, 0, '0000-00-00 00:00:00'),
+(155, 'Emergency', 'เครื่องปริ้น', 'test', '15:52:18', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 0, '2021-07-03 19:17:35'),
+(156, 'Office 7', 'เครื่องปริ้น', 'test', '15:52:34', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 0, '2021-07-03 19:20:56'),
 (157, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:15', '2021-06-25', '', 'กำลังดำเนินการ', 'Jeerachon', 'teerat', '', 0, 1, '0000-00-00 00:00:00'),
 (159, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:56', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:34'),
 (160, 'Emergency', 'โทรศัพท์', 'test', '15:54:02', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:38'),
-(162, 'Emergency', 'คอมพิวเตอร์', 'test3', '17:10:50', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-25 17:13:56');
+(162, 'Emergency', 'คอมพิวเตอร์', 'test3', '17:10:50', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-25 17:13:56'),
+(163, 'Surgical R', 'คอมพิวเตอร์', 'testqqq', '15:52:22', '2021-07-03', '', 'ยกเลิก', 'Jeerachon', 'Sirichai', 'แจ้งผิด', 0, 0, '2021-07-03 19:13:07'),
+(164, 'Labor Room', 'โทรศัพท์', 'rewr', '16:03:46', '2021-07-03', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 1, 1, '2021-07-03 19:38:41'),
+(165, 'Laboratory', 'ก็อกน้ำ', 'tre', '16:04:29', '2021-07-03', '', 'กำลังดำเนินการ', 'Jeerachon', 'Sirichai', '', 1, 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -227,8 +230,7 @@ INSERT INTO `user` (`Username`, `Password`, `firstname`, `lastname`, `Tel`, `Log
 -- Indexes for table `line`
 --
 ALTER TABLE `line`
-  ADD PRIMARY KEY (`token`),
-  ADD KEY `fk_username2` (`Username`);
+  ADD PRIMARY KEY (`Username`);
 
 --
 -- Indexes for table `note`
@@ -276,7 +278,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `Case_ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `Case_ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `room`
