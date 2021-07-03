@@ -32,7 +32,8 @@ if (isset($_POST['tempId2'])) {
       
       /* $token = ""; */
       /* $gee = "งานหมายเลขที่ ".$idupd."ได้เริ่มดำเนินการโดย".$sa."แล้ว"; */
-      echo$zzz ="https://api-line-for-big-01.herokuapp.com/send?token=".$tokenn."&text=งานหมายเลขที่%20".$idupd2."%20ได้สิ้นสุดการทำงานโดย%20".$worker."%20แล้ว";
+      $new_str = str_replace(' ', '%20', $finish);
+      echo$zzz ="https://api-line-for-big-01.herokuapp.com/send?token=".$tokenn."&text=งานหมายเลขที่%20".$idupd2."%20ได้สิ้นสุดการทำงานโดย%20".$worker."%20แล้วเมื่อเวลา%20".$new_str;
       $ch = curl_init($zzz);
     
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
