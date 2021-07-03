@@ -22,9 +22,23 @@ if (isset($_POST['tempId2'])) {
         $result3 = mysqli_query($con,$tokena);
       while ($row2 = mysqli_fetch_array($result3)) {
         $token = $row2['api'] ; 
-        echo $token;
+        /* echo $token; */
       }
-        
+      //ฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟฟ
+      $result2 = mysqli_query($con,"Select token from line where Username = '$uname'");
+        while ($row = mysqli_fetch_array($result2)) {
+            $tokenn = $row['token'] ;
+          }
+      
+      /* $token = ""; */
+      /* $gee = "งานหมายเลขที่ ".$idupd."ได้เริ่มดำเนินการโดย".$sa."แล้ว"; */
+      echo$zzz ="https://api-line-for-big-01.herokuapp.com/send?token=".$tokenn."&text=งานหมายเลขที่%20".$idupd2."%20ได้สิ้นสุดการทำงานโดย%20".$worker."%20แล้ว";
+      $ch = curl_init($zzz);
+    
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      $result = curl_exec($ch);
+  curl_close($ch);
     //line notify
     define('LINE_API',"https://notify-api.line.me/api/notify");
     //ใส่Token ที่copy เอาไว้
@@ -57,10 +71,11 @@ if (isset($_POST['tempId2'])) {
     
   }
   $res = notify_message($str,$token);
-        print_r($res);
+  print_r($res);
+
     echo "<script type=\"text/javascript\">";
     echo "alert(\"เรียบร้อยแล้ว\");";
-    echo "window.location.assign('$page')";
+    /* echo "window.location.assign('$page')"; */
     echo "</script>";
   } else {
     echo 'แก้ไขข้อมูลไม่สำเร็จ';
