@@ -30,8 +30,13 @@ def insert_data(username,token):
     with connection:
         with connection.cursor() as cursor:
             sql = "INSERT INTO line (Username, token) VALUES (%s, %s)"
-            cursor.execute(sql, (username,token))
-        connection.commit()
+            result = cursor.execute(sql, (username,token))
+            connection.commit()
+            if result == False :
+                sql = "UPDATE line (token) where (%s) values(%s)"
+                result = cursor.execute(sql, (username,token))
+                connection.commit()
+        
 
 
 if __name__=="__main__":
