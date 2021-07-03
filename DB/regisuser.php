@@ -14,7 +14,7 @@ if ($pass == $pass2) {
     if ($result) {
         echo "<script type=\"text/javascript\">";
             echo "alert(\"สมัครสมาชิกสำเร็จ\");";
-            echo "window.location.assign('../index.php')";
+            echo "window.location.assign('../line.php')";
             echo "</script>";
     } else {
         echo "<script type=\"text/javascript\">";

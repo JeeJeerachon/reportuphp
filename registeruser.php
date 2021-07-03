@@ -53,7 +53,6 @@
                         </tr>
                     </table>
                     <button type="submit" class="btn btn-primary">สมัคร</button>
-                    
                 </div>
             </div>
         </form>

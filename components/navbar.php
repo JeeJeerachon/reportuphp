@@ -39,11 +39,11 @@ require_once("../DB/connect.php");
       <span class="dropdown" class="navbar-text ">
         <a class="nav-link dropdown-toggle" style="color: #FFFFFF;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../img/profile.png" alt="Avatar" class="avatar">
           <?php
-
           echo 'ผู้ใช้ ';
           echo "  : <tr class='fs-4' >" . $_SESSION['Username'] . "</tr>"; ?>
         </a>
         <ul class="dropdown-menu">
+          <li><a class="dropdown-item" target = '_blank' href="../line.php">แจ้งเตือน Line</a></li>
           <li><a class="dropdown-item" href="../auth/logout.php">ออกจากระบบ</a></li>
         </ul>
       </span>
