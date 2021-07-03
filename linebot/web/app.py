@@ -21,23 +21,37 @@ def addToken():
         username =request.form['user']
         password =request.form['pass']
         token = request.form['token_line']
-    print(username)
-    print(token)
-    insert_data(username,token)
-    return render_template("end.html")
+
+    with connection:
+        with connection.cursor() as cursor:
+            
+            sql1 = "SELECT token from line where Username = (%s)"
+            result = cursor.execute(sql1, (username))
+            connection.commit()
+            print (result)
+            
+        if result :
+            update_data(username,token)
+        else:
+            insert_data(username,token)
+            
+        return render_template("end.html")
+
 
 def insert_data(username,token):
     with connection:
         with connection.cursor() as cursor:
+            
             sql = "INSERT INTO line (Username, token) VALUES (%s, %s)"
-            result = cursor.execute(sql, (username,token))
-            connection.commit()
-            if result == False :
-                sql = "UPDATE line (token) where (%s) values(%s)"
-                result = cursor.execute(sql, (username,token))
-                connection.commit()
-        
-
+            cursor.execute(sql, (username,token))
+        connection.commit()
+def update_data(username,token):
+    with connection:
+        with connection.cursor() as cursor:
+            
+            sql = "update line set (token = (%s)) where username = (%s)"
+            cursor.execute(sql, (token,username))
+        connection.commit()
 
 if __name__=="__main__":
     app.run()
