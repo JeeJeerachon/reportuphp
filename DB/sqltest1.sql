@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2021 at 09:33 AM
+-- Generation Time: Jul 03, 2021 at 09:35 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `sqltest1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `line`
+--
+
+CREATE TABLE `line` (
+  `Username` varchar(60) NOT NULL,
+  `token` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `line`
+--
+
+INSERT INTO `line` (`Username`, `token`) VALUES
+('Pai007', '65103203210035132');
 
 -- --------------------------------------------------------
 
@@ -64,13 +82,13 @@ CREATE TABLE `report` (
 INSERT INTO `report` (`Case_ID`, `Location`, `Problem`, `Description`, `Time`, `Date`, `Editby`, `Stat`, `Username`, `Worker`, `why`, `newupdate`, `engupdate`, `finish`) VALUES
 (148, 'Pharmacy', 'ก็อกน้ำ', 'มีดหลุดมือไปโดน', '15:58:46', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-25 15:33:11'),
 (149, 'Emergency', 'ประตู,หน้าต่าง', 'ประตูเป็นรู ปลวกกิน', '16:01:50', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-16 16:15:53'),
-(150, 'Laboratory', 'ประตู,หน้าต่าง', 'test', '15:24:34', '2021-06-25', '', 'กำลังดำเนินการ', 'Jeerachon', 'Sirichai', '', 0, 1, '0000-00-00 00:00:00'),
+(150, 'Laboratory', 'ประตู,หน้าต่าง', 'test', '15:24:34', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-30 14:32:29'),
 (153, 'Emergency', 'เครื่องปริ้น', 'test', '15:25:30', '2021-06-25', '', 'สำเร็จ', 'aof007', 'teerat', '', 1, 1, '2021-06-25 18:12:20'),
 (155, 'Emergency', 'เครื่องปริ้น', 'test', '15:52:18', '2021-06-25', '', 'รอช่าง', 'aof007', 'ไม่มี', '', 0, 0, '0000-00-00 00:00:00'),
 (156, 'Office 7', 'เครื่องปริ้น', 'test', '15:52:34', '2021-06-25', '', 'รอช่าง', 'aof007', 'ไม่มี', '', 0, 0, '0000-00-00 00:00:00'),
 (157, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:15', '2021-06-25', '', 'กำลังดำเนินการ', 'Jeerachon', 'teerat', '', 0, 1, '0000-00-00 00:00:00'),
-(159, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:56', '2021-06-25', '', 'กำลังดำเนินการ', 'aof007', 'Sirichai', '', 0, 1, '0000-00-00 00:00:00'),
-(160, 'Emergency', 'โทรศัพท์', 'test', '15:54:02', '2021-06-25', '', 'กำลังดำเนินการ', 'aof007', 'Sirichai', '', 0, 1, '0000-00-00 00:00:00'),
+(159, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:56', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:34'),
+(160, 'Emergency', 'โทรศัพท์', 'test', '15:54:02', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:38'),
 (162, 'Emergency', 'คอมพิวเตอร์', 'test3', '17:10:50', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-25 17:13:56');
 
 -- --------------------------------------------------------
@@ -199,11 +217,18 @@ INSERT INTO `user` (`Username`, `Password`, `firstname`, `lastname`, `Tel`, `Log
 ('Pai007', '123456', 'pai', 'pai', 1234567, 0, '0000-00-00 00:00:00', 'user'),
 ('phoomin', '456789', 'ภูมินทร์', 'บุญอนันต์', 1333333333, 0, '0000-00-00 00:00:00', 'user'),
 ('Sirichai', '654321', 'ศิริชัย', 'เบ็ญจมาคม', 215148148, 0, '0000-00-00 00:00:00', 'admin'),
-('teerat', '987654', 'ธีรัช', 'กิจเจริญ', 11223344, 1, '2021-06-27 14:28:52', 'superadmin');
+('teerat', '987654', 'ธีรัช', 'กิจเจริญ', 11223344, 0, '0000-00-00 00:00:00', 'superadmin');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `line`
+--
+ALTER TABLE `line`
+  ADD PRIMARY KEY (`token`),
+  ADD KEY `fk_username2` (`Username`);
 
 --
 -- Indexes for table `note`
@@ -274,6 +299,12 @@ ALTER TABLE `tool`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `line`
+--
+ALTER TABLE `line`
+  ADD CONSTRAINT `fk_username2` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`);
 
 --
 -- Constraints for table `note`
