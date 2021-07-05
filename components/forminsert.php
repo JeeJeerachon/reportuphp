@@ -8,6 +8,7 @@ require '../DB/connect.php';
     $uname =$_SESSION["Username"];
     $adddat = "INSERT INTO report (Location,Problem,Description,Time,Date,Stat,Username,Worker) VALUE ('$room','$type','$desc',CURRENT_TIME(),CURRENT_DATE(),'รอช่าง','$uname','ไม่มี')";
     $tokena = "SELECT api FROM token_line";
+    /* echo $adddat; */
     $result = mysqli_query($con,$tokena);
     while ($row = mysqli_fetch_array($result)) {
         $token = $row['api'] ; }

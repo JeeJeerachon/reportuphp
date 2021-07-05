@@ -54,7 +54,7 @@ $_SESSION['lastpage'] = "../app/home.php"
               if ($result = mysqli_query($con, $Squery)) {
                 $y = 1;
                 while ($room = mysqli_fetch_array($result)) {
-              ?> <option value="<?php echo $room['roomname']; ?>"><?php echo $y . ' : ' . $room['roomname']; ?></option>
+              ?> <option value="<?php echo $room['roomid']; ?>"><?php echo $y . ' : ' . $room['roomname']; ?></option>
               <?php $y = $y + 1;
                 }
               }
