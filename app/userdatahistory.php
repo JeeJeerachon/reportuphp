@@ -92,11 +92,7 @@ $use = $_SESSION['Username'];
                   </form>";
                     echo "<form target='_blank' action='../admin/addnote.php' method='POST'>
                   <input type='hidden' name='ref' value='" . $row["Case_ID"] . "'/>
-                  <button type='submit' class='btn btn-success' name='submit-btn'title='เพิ่มหมายเหตุ' value='หมายเหตุ' >
-                  <span class='material-icons'>
-                  note_add
-                  </span>
-                  </button>
+                  
                   </form> 
                   </div>
                   </td>";
