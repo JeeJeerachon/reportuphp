@@ -76,7 +76,7 @@ if (isset($_POST['tempId2'])) {
 
     echo "<script type=\"text/javascript\">";
     echo "alert(\"เรียบร้อยแล้ว\");";
-    /* echo "window.location.assign('$page')"; */
+    echo "window.location.assign('$page')";
     echo "</script>";
   } else {
     echo 'แก้ไขข้อมูลไม่สำเร็จ';

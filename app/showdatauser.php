@@ -66,7 +66,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 echo "<tr>";
                                 echo "<td>" . $row["Case_ID"] . ' ';
                                 if ($row['newupdate'] == 1 ){
-                                    echo "<span class='badge bg-success'>Update</span>";
+                                    echo "<span class='badge bg-success'>New</span>";
                                 }
                                 
                                 echo  "</td>";
