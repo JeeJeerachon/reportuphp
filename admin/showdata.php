@@ -62,7 +62,7 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
 
                 echo "<tr>";
                 echo "<td>" . $row["Case_ID"] ;
-                    if ($row['newupdate'] == 1 ){
+                    if ($row['engupdate'] == 1 ){
                       echo "<img src='../sign.png' width='10%' height='10px'>";
                       }echo  "</td>";
                 echo "<td>" . $row["Location"] . "</td>";

@@ -154,8 +154,8 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     ?>
     <?php
     require("../DB/connect.php");
-    $data = $con->query("select count(problem) as sum_problem, problem from report group by problem order by sum_problem DESC");
-    $data2 = $con->query("select count(Location) as sum_location, Location from report group by location order by sum_location DESC");
+    $data = $con->query("select count(problem) as sum_problem, problem from report group by problem order by problem DESC");
+    $data2 = $con->query("SELECT roomname,count(Location)as sum_location FROM report RIGHT JOIN room on report.Location = room.roomid GROUP BY roomname order by roomid");
     $label = [];
     $datax = [];
     $loc = [];
@@ -166,7 +166,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $datax[] = $result->sum_problem;
     }
     while ($result = $data2->fetch_object()) {
-        $loc[] = $result->Location;
+        $loc[] = $result->roomname;
         $locc[] = $result->sum_location;
     }
     ?>
@@ -179,7 +179,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
             data: {
                 labels: <?= json_encode($label) ?>,
                 datasets: [{
-                    label: 'สถิติการแจ้งซ่อม',
+                    label: ' ',
                     data: <?= json_encode($datax) ?>,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -206,6 +206,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                         beginAtZero: true
                     }
                 }
+                
             }
         });
     </script>
@@ -218,7 +219,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
             data: {
                 labels: <?= json_encode($loc) ?>,
                 datasets: [{
-                    label: 'สถิตห้องที่แจ้งซ่อม',
+                    label: ' ',
                     data: <?= json_encode($locc) ?>,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
