@@ -53,7 +53,11 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $bestworker = $rq['Worker'];
         $jobcount = $rq['sum_worker'];
     }
-
+    $data3 = $con->query("SELECT COUNT(Worker) as sum_worker,Worker from report WHERE Stat = 'สำเร็จ' GROUP by Worker");
+    while ($result = $data3->fetch_object()){
+        $worker[] = $result->worker;
+        $workersum[] = $result->sum_worker;
+    }
     ?>
     <br>
     <div class="container">
@@ -156,6 +160,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     require("../DB/connect.php");
     $data = $con->query("select count(problem) as sum_problem, problem from report group by problem order by problem DESC");
     $data2 = $con->query("SELECT roomname,count(Location)as sum_location FROM report RIGHT JOIN room on report.Location = room.roomid GROUP BY roomname order by roomid");
+    
     $label = [];
     $datax = [];
     $loc = [];

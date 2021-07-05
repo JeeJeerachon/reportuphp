@@ -63,7 +63,7 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
                 echo "<tr>";
                 echo "<td>" . $row["Case_ID"] ;
                     if ($row['engupdate'] == 1 ){
-                      echo "<img src='../sign.png' width='10%' height='10px'>";
+                      echo "<span class='badge bg-success'>New</span>";
                       }echo  "</td>";
                 echo "<td>" . $row["Location"] . "</td>";
                 echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
