@@ -53,11 +53,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $bestworker = $rq['Worker'];
         $jobcount = $rq['sum_worker'];
     }
-    $data3 = $con->query("SELECT COUNT(Worker) as sum_worker,Worker from report WHERE Stat = 'สำเร็จ' GROUP by Worker");
-    while ($result = $data3->fetch_object()) {
-        $worker[] = $result->Worker;
-        $workersum[] = $result->sum_worker;
-    }
+    
     ?>
     <br>
     <div class="container">
@@ -112,10 +108,12 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                             <p>ห้องที่แจ้งน้อยที่สุด: <?php echo $botloc . ' : ' . $botlocsum . ' ครั้ง'; ?></p>
                         </div>
                         <div class="col-md-2">
+                        <h3>สรุปงานช่าง</h3>
                             <?php
+                            $data3 = $con->query("SELECT COUNT(Worker) as sum_worker,Worker from report WHERE Stat = 'สำเร็จ' GROUP by Worker");
                             while ($wk = mysqli_fetch_array($data3)) {
                             ?>
-                                <p>ช่าง <?php echo $worker . ' : ' . $sum_worker . ' ครั้ง'; ?></p>
+                                <p>ช่าง <?php echo $wk['Worker'] . ' ทำงาน ' . $wk['sum_worker'] . ' ครั้ง'; ?></p>
                             <?php
                             }
                             ?>
