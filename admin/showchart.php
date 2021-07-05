@@ -20,11 +20,11 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     include '../components/navbaradmin.php';
     require("../DB/connect.php");
     #ห้อง มากสุด
-    $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location DESC LIMIT 1";
+    $query = "Select count(Location) as sum_location, roomname from report right join room on report.Location = room.roomid group by location order by sum_location DESC LIMIT 1";
     $result = mysqli_query($con, $query);
     while ($rowq = mysqli_fetch_array($result)) {
         $toplocsum = $rowq['sum_location'];
-        $toploc = $rowq['Location'];
+        $toploc = $rowq['roomname'];
     }
     #ชนิด มากสุด
     $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem DESC LIMIT 1";
@@ -34,11 +34,11 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $toppro = $rowqq['Problem'];
     }
     #ห้อง น้อยสุด
-    $query = "Select count(Location) as sum_location, Location from report group by location order by sum_location ASC LIMIT 1";
+    $query = "Select count(Location) as sum_location, roomname from report right join room on report.Location = room.roomid group by location order by sum_location ASC LIMIT 1";
     $result = mysqli_query($con, $query);
     while ($rowq1 = mysqli_fetch_array($result)) {
         $botlocsum = $rowq1['sum_location'];
-        $botloc = $rowq1['Location'];
+        $botloc = $rowq1['roomname'];
     }
     #ชนิด น้อยสุด
     $query = "select count(problem) as sum_problem, Problem from report group by problem order by sum_problem ASC LIMIT 1";
@@ -55,7 +55,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     }
     $data3 = $con->query("SELECT COUNT(Worker) as sum_worker,Worker from report WHERE Stat = 'สำเร็จ' GROUP by Worker");
     while ($result = $data3->fetch_object()){
-        $worker[] = $result->worker;
+        $worker[] = $result->Worker;
         $workersum[] = $result->sum_worker;
     }
     ?>
@@ -146,7 +146,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                         </div>
                         <div class="col-md-2">
                             <p>ช่างที่ทำงานสำเร็จสูงสุด: <?php echo $bestworker . ' : ' . $jobcount . ' ครั้ง'; ?></p>
-                            
+
                         </div>
                     </div>
                 </div>
