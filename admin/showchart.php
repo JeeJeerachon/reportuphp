@@ -54,8 +54,8 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
         $jobcount = $rq['sum_worker'];
     }
     $data3 = $con->query("SELECT COUNT(Worker) as sum_worker,Worker from report WHERE Stat = 'สำเร็จ' GROUP by Worker");
-    while ($result = $data3->fetch_object()){
-        $worker[] = $result->worker;
+    while ($result = $data3->fetch_object()) {
+        $worker[] = $result->Worker;
         $workersum[] = $result->sum_worker;
     }
     ?>
@@ -66,28 +66,10 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                 <div class="card-body p-5">
                     <h4 class="my-4">สถิติการแจ้งซ่อม</h4>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-10">
                             <div>
                                 <canvas id="myChart"></canvas>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>รายละเอียด</h3>
-                            <ul>
-                                <?php
-                                require '../DB/connect.php';
-                                $result = mysqli_query($con, "SELECT * FROM tool");
-                                if ($result) {
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        echo "<li>" . $row["toolname"] . "</li>";
-                                    }
-                                }
-                                ?>
-                            </ul>
-                            </h4>
-                        </div>
-                        <div class="col-md-2">
-
                         </div>
                     </div>
                 </div>
@@ -102,23 +84,8 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                 <div class="card-body p-5">
                     <h4 class="my-4">สถิตห้องที่แจ้งซ่อม</h4>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <canvas id="myChart2" width="400" height="400"></canvas>
-                        </div>
-                        <div class="col-md-2">
-                            <h3>รายละเอียด</h3>
-                            <?php
-                            require '../DB/connect.php';
-                            $result = mysqli_query($con, "SELECT * FROM room");
-                            if ($result) {
-                                while ($row = mysqli_fetch_array($result)) {
-                                    echo "<li>" . $row["roomname"] . "</li>";
-                                }
-                            }
-                            ?>
-                        </div>
-                        <div class="col-md-2">
-
                         </div>
 
                     </div>
@@ -145,7 +112,14 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                             <p>ห้องที่แจ้งน้อยที่สุด: <?php echo $botloc . ' : ' . $botlocsum . ' ครั้ง'; ?></p>
                         </div>
                         <div class="col-md-2">
-                            <p>ช่างที่ทำงานสำเร็จสูงสุด: <?php echo $bestworker . ' : ' . $jobcount . ' ครั้ง'; ?></p>
+                            <?php
+                            while ($wk = mysqli_fetch_array($data3)) {
+                            ?>
+                                <p>ช่าง <?php echo $worker . ' : ' . $sum_worker . ' ครั้ง'; ?></p>
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
@@ -160,7 +134,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
     require("../DB/connect.php");
     $data = $con->query("select count(problem) as sum_problem, problem from report group by problem order by problem DESC");
     $data2 = $con->query("SELECT roomname,count(Location)as sum_location FROM report RIGHT JOIN room on report.Location = room.roomid GROUP BY roomname order by roomid");
-    
+
     $label = [];
     $datax = [];
     $loc = [];
@@ -211,7 +185,7 @@ $_SESSION['lastpage'] = "../admin/showchart.php";
                         beginAtZero: true
                     }
                 }
-                
+
             }
         });
     </script>
