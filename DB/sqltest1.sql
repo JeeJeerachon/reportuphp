@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 02:53 PM
+-- Generation Time: Jul 05, 2021 at 10:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -60,7 +60,7 @@ CREATE TABLE `note` (
 
 CREATE TABLE `report` (
   `Case_ID` int(8) NOT NULL,
-  `Location` char(10) NOT NULL,
+  `Location` int(3) NOT NULL,
   `Problem` char(30) NOT NULL,
   `Description` text NOT NULL,
   `Time` time NOT NULL,
@@ -80,19 +80,22 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`Case_ID`, `Location`, `Problem`, `Description`, `Time`, `Date`, `Editby`, `Stat`, `Username`, `Worker`, `why`, `newupdate`, `engupdate`, `finish`) VALUES
-(148, 'Pharmacy', 'ก็อกน้ำ', 'มีดหลุดมือไปโดน', '15:58:46', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-25 15:33:11'),
-(149, 'Emergency', 'ประตู,หน้าต่าง', 'ประตูเป็นรู ปลวกกิน', '16:01:50', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-16 16:15:53'),
-(150, 'Laboratory', 'ประตู,หน้าต่าง', 'test', '15:24:34', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-30 14:32:29'),
-(153, 'Emergency', 'เครื่องปริ้น', 'test', '15:25:30', '2021-06-25', '', 'สำเร็จ', 'aof007', 'teerat', '', 1, 1, '2021-06-25 18:12:20'),
-(155, 'Emergency', 'เครื่องปริ้น', 'test', '15:52:18', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 0, '2021-07-03 19:17:35'),
-(156, 'Office 7', 'เครื่องปริ้น', 'test', '15:52:34', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 0, '2021-07-03 19:20:56'),
-(157, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:15', '2021-06-25', '', 'กำลังดำเนินการ', 'Jeerachon', 'teerat', '', 0, 1, '0000-00-00 00:00:00'),
-(159, 'Emergency', 'ก็อกน้ำ', 'test', '15:53:56', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:34'),
-(160, 'Emergency', 'โทรศัพท์', 'test', '15:54:02', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:38'),
-(162, 'Emergency', 'คอมพิวเตอร์', 'test3', '17:10:50', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-25 17:13:56'),
-(163, 'Surgical R', 'คอมพิวเตอร์', 'testqqq', '15:52:22', '2021-07-03', '', 'ยกเลิก', 'Jeerachon', 'Sirichai', 'แจ้งผิด', 0, 0, '2021-07-03 19:13:07'),
-(164, 'Labor Room', 'โทรศัพท์', 'rewr', '16:03:46', '2021-07-03', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 1, 1, '2021-07-03 19:38:41'),
-(165, 'Laboratory', 'ก็อกน้ำ', 'tre', '16:04:29', '2021-07-03', '', 'กำลังดำเนินการ', 'Jeerachon', 'Sirichai', '', 1, 1, '0000-00-00 00:00:00');
+(148, 9, 'ก็อกน้ำ', 'มีดหลุดมือไปโดน', '15:58:46', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-25 15:33:11'),
+(149, 19, 'ประตู,หน้าต่าง', 'ประตูเป็นรู ปลวกกิน', '16:01:50', '2021-06-16', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 0, 1, '2021-06-16 16:15:53'),
+(150, 22, 'ประตู,หน้าต่าง', 'test', '15:24:34', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-30 14:32:29'),
+(153, 19, 'เครื่องปริ้น', 'test', '15:25:30', '2021-06-25', '', 'สำเร็จ', 'aof007', 'teerat', '', 1, 1, '2021-06-25 18:12:20'),
+(155, 19, 'เครื่องปริ้น', 'test', '15:52:18', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 0, '2021-07-03 19:17:35'),
+(156, 17, 'เครื่องปริ้น', 'test', '15:52:34', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 0, '2021-07-03 19:20:56'),
+(157, 19, 'ก็อกน้ำ', 'test', '15:53:15', '2021-06-25', '', 'กำลังดำเนินการ', 'Jeerachon', 'teerat', '', 0, 1, '0000-00-00 00:00:00'),
+(159, 19, 'ก็อกน้ำ', 'test', '15:53:56', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:34'),
+(160, 19, 'โทรศัพท์', 'test', '15:54:02', '2021-06-25', '', 'สำเร็จ', 'aof007', 'Sirichai', '', 1, 1, '2021-06-30 14:32:38'),
+(162, 19, 'คอมพิวเตอร์', 'test3', '17:10:50', '2021-06-25', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-06-25 17:13:56'),
+(163, 21, 'คอมพิวเตอร์', 'testqqq', '15:52:22', '2021-07-03', '', 'ยกเลิก', 'Jeerachon', 'Sirichai', 'แจ้งผิด', 0, 0, '2021-07-03 19:13:07'),
+(164, 20, 'โทรศัพท์', 'rewr', '16:03:46', '2021-07-03', '', 'สำเร็จ', 'Jeerachon', 'Sirichai', '', 0, 1, '2021-07-03 19:38:41'),
+(165, 22, 'ก็อกน้ำ', 'tre', '16:04:29', '2021-07-03', '', 'กำลังดำเนินการ', 'Jeerachon', 'Sirichai', '', 0, 1, '0000-00-00 00:00:00'),
+(169, 22, 'คอมพิวเตอร์', 'sad', '15:19:33', '2021-07-05', '', 'รอช่าง', 'Jeerachon', 'ไม่มี', '', 0, 1, '0000-00-00 00:00:00'),
+(170, 6, 'ประตู,หน้าต่าง', 'qqqqqq', '15:21:29', '2021-07-05', '', 'รอช่าง', 'Jeerachon', 'ไม่มี', '', 0, 1, '0000-00-00 00:00:00'),
+(171, 7, 'คอมพิวเตอร์', 'weeee', '15:21:37', '2021-07-05', '', 'รอช่าง', 'Jeerachon', 'ไม่มี', '', 0, 1, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -127,6 +130,7 @@ INSERT INTO `room` (`roomid`, `roomname`) VALUES
 (16, 'Office 6'),
 (17, 'Office 7'),
 (18, 'Office 8'),
+(19, 'Emergency'),
 (20, 'Labor Room'),
 (21, 'Surgical Room'),
 (22, 'Laboratory');
@@ -220,7 +224,7 @@ INSERT INTO `user` (`Username`, `Password`, `firstname`, `lastname`, `Tel`, `Log
 ('Pai007', '123456', 'pai', 'pai', 1234567, 0, '0000-00-00 00:00:00', 'user'),
 ('phoomin', '456789', 'ภูมินทร์', 'บุญอนันต์', 1333333333, 0, '0000-00-00 00:00:00', 'user'),
 ('Sirichai', '654321', 'ศิริชัย', 'เบ็ญจมาคม', 215148148, 0, '0000-00-00 00:00:00', 'admin'),
-('teerat', '987654', 'ธีรัช', 'กิจเจริญ', 11223344, 0, '0000-00-00 00:00:00', 'superadmin');
+('teerat', '987654', 'ธีรัช', 'กิจเจริญ', 11223344, 1, '2021-07-05 15:21:44', 'superadmin');
 
 --
 -- Indexes for dumped tables
@@ -244,7 +248,8 @@ ALTER TABLE `note`
 --
 ALTER TABLE `report`
   ADD PRIMARY KEY (`Case_ID`),
-  ADD KEY `fk_username` (`Username`);
+  ADD KEY `fk_username` (`Username`),
+  ADD KEY `fk_roomid` (`Location`);
 
 --
 -- Indexes for table `room`
@@ -278,7 +283,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `Case_ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `Case_ID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT for table `room`
@@ -318,6 +323,7 @@ ALTER TABLE `note`
 -- Constraints for table `report`
 --
 ALTER TABLE `report`
+  ADD CONSTRAINT `fk_roomid` FOREIGN KEY (`Location`) REFERENCES `room` (`roomid`),
   ADD CONSTRAINT `fk_username` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
