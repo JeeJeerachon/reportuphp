@@ -48,7 +48,7 @@ $_SESSION['lastpage'] = "../admin/showdataprogess.php";
               <?php
               require '../DB/connect.php';
               $q32 = $_SESSION['Username'];
-              $result = mysqli_query($con, "SELECT * FROM report Where stat = 'กำลังดำเนินการ' and Worker = '$q32'");
+              $result = mysqli_query($con, "SELECT * FROM ((report inner join user on report.Username=user.Username)inner join room on report.Location = room.roomid) Where stat = 'กำลังดำเนินการ' and Worker = '$q32'");
 
               if ($result) {
 
@@ -64,7 +64,7 @@ $_SESSION['lastpage'] = "../admin/showdataprogess.php";
 
                   echo "<tr>";
                   echo "<td>" . $row["Case_ID"] . "</td>";
-                  echo "<td>" . $row["Location"] . "</td>";
+                  echo "<td>" . $row["roomname"] . "</td>";
                   echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
               text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 
               display: block; overflow: hidden; 

@@ -29,7 +29,7 @@ $_SESSION['target'] = $target;
               <div class="mb-3 p-3" style="background-color: #F3F3F3;">
                 <?php
                 require '../DB/connect.php';
-                $result = mysqli_query($con, "SELECT * FROM report inner join user on report.Username=user.Username Where Case_ID = '$target' ");
+                $result = mysqli_query($con, "SELECT * FROM ((report inner join user on report.Username=user.Username)inner join room on report.Location = room.roomid) Where Case_ID = '$target' ");
                 if ($result) {
                   if ($_SESSION['type'] == 'admin' or $_SESSION['type'] == 'superadmin') {
                     $result2 = mysqli_query($con, "UPDATE report SET engupdate = '0' where Case_ID = '$target' ");
@@ -58,7 +58,7 @@ $_SESSION['target'] = $target;
                             <p class='fw-bold'>สถานที่ : </p>
                           </td>
                           <td style='width:25%'>
-                            <p><?php echo $row["Location"]; ?></p>
+                            <p><?php echo $row["roomname"]; ?></p>
                           </td>
                         </tr>
                         <tr>

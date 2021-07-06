@@ -47,7 +47,7 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
           <tbody> 
             <?php
             require '../DB/connect.php';
-            $result = mysqli_query($con, "SELECT * FROM report Where stat = 'รอช่าง'");
+            $result = mysqli_query($con, "SELECT * FROM ((report inner join user on report.Username=user.Username)inner join room on report.Location = room.roomid) Where stat = 'รอช่าง'");
 
             if ($result) {
               while ($row = mysqli_fetch_array($result)) {
@@ -65,7 +65,7 @@ $_SESSION['lastpage'] = "../admin/showdata.php";
                     if ($row['engupdate'] == 1 ){
                       echo "<span class='badge bg-success'>New</span>";
                       }echo  "</td>";
-                echo "<td>" . $row["Location"] . "</td>";
+                echo "<td>" . $row["roomname"] . "</td>";
                 echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
               text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 
               display: block; overflow: hidden; 

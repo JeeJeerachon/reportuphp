@@ -48,7 +48,7 @@ $use = $_SESSION['Username'];
               <tbody>
                 <?php
                 require '../DB/connect.php';
-                $result = mysqli_query($con, "SELECT * FROM report WHERE Username = '$use' and stat = 'สำเร็จ' or 'ยกเลิก' ");
+                $result = mysqli_query($con, "SELECT * FROM report inner join room on report.Location = room.roomid WHERE Username = '$use' and stat = 'สำเร็จ' or 'ยกเลิก' ");
 
                 if ($result) {
 
@@ -65,7 +65,7 @@ $use = $_SESSION['Username'];
                   }
                     echo "<tr>";
                     echo "<td>" . $row["Case_ID"] . "</td>";
-                    echo "<td>" . $row["Location"] . "</td>";
+                    echo "<td>" . $row["roomname"] . "</td>";
                     echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
               text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 
               display: block; overflow: hidden; 

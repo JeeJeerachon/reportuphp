@@ -45,7 +45,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                     <tbody>
                         <?php
                         require '../DB/connect.php';
-                        $result = mysqli_query($con, "SELECT * FROM report Where (Username = '$uname' and stat = 'รอช่าง') or (Username = '$uname' and stat = 'กำลังดำเนินการ') order by stat");
+                        $result = mysqli_query($con, "SELECT * FROM report inner join room on report.Location = room.roomid Where (Username = '$uname' and stat = 'รอช่าง') or (Username = '$uname' and stat = 'กำลังดำเนินการ') order by stat ");
 
                         if ($result) {
                             $x=$_SESSION['Username'];
@@ -70,7 +70,7 @@ $_SESSION['lastpage'] = "../app/showdatauser.php";
                                 }
                                 
                                 echo  "</td>";
-                                echo "<td>" . $row["Location"] . "</td>";
+                                echo "<td>" . $row["roomname"] . "</td>";
                                 echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
           text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 
           display: block; overflow: hidden; 

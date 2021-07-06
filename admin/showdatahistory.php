@@ -47,7 +47,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
               <tbody>
                 <?php
                 require '../DB/connect.php';
-                $result = mysqli_query($con, "SELECT * FROM report WHERE stat = 'สำเร็จ' or stat = 'ยกเลิก' ");
+                $result = mysqli_query($con, "SELECT * FROM ((report inner join user on report.Username=user.Username)inner join room on report.Location = room.roomid) WHERE stat = 'สำเร็จ' or stat = 'ยกเลิก' ");
 
                 if ($result) {
 
@@ -64,7 +64,7 @@ $_SESSION['lastpage'] = "../admin/showdatahistory.php";
                   }
                     echo "<tr>";
                     echo "<td>" . $row["Case_ID"] . "</td>";
-                    echo "<td>" . $row["Location"] . "</td>";
+                    echo "<td>" . $row["roomname"] . "</td>";
                     echo "<td>" . "<p class='fw-bold'>" . $row["Problem"] . "</p>" . "<p class='text-break' style='text-decoration: none;
               text-overflow: ellipsis; /* เพิ่ม ... จุดจุดจุดท้ายสุด */ 
               display: block; overflow: hidden; 
