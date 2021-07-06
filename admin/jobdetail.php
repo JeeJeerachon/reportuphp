@@ -110,7 +110,7 @@ $_SESSION['target'] = $target;
                     </table>";
                 <?php
                     $_SESSION['cid'] = $row["Case_ID"];
-                    $_SESSION['loc'] = $row["Location"];
+                    $_SESSION['loc'] = $row["roomname"];
                     $_SESSION['pro'] = $row["Problem"];
                     $_SESSION['des'] = $row["Description"];
                     $_SESSION['user'] = $row["Username"];
